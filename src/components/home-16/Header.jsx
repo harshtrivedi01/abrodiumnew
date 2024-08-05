@@ -1,5 +1,5 @@
 
-
+import logo from "../../Images/logo.png"
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -33,15 +33,15 @@ const Header = () => {
           {/* <!--Nav Outer --> */}
           <div className="nav-outer">
             <div className="logo-box">
-              <div className="logo">
-                <Link to="/">
-                  <img
-                   
-                    src="/images/logo-2.svg"
-                    alt="brand"
-                  />
-                </Link>
-              </div>
+            <div className="me-10">
+              <Link to="/">
+              <img
+                                        alt="brand"
+                                        src={logo}
+                                       className="h-28 w-28"
+                                    />
+              </Link>
+            </div>
             </div>
             {/* End .logo-box */}
 

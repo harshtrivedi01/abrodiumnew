@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import { useDispatch, useSelector } from "react-redux";
 import { reloadCart } from "../../features/shop/shopSlice";
-
+import logo from "../../Images/logo.png"
 
 const ShopHeader = () => {
   const { cart } = useSelector((state) => state.shop) || {};
@@ -42,13 +42,13 @@ const ShopHeader = () => {
         {/* <!--Nav Outer --> */}
         <div className="nav-outer">
           <div className="logo-box">
-            <div className="logo">
+          <div className="me-10">
               <Link to="/">
-                <img
-               
-                  src="/images/logo.svg"
-                  alt="brand"
-                />
+              <img
+                                        alt="brand"
+                                        src={logo}
+                                       className="h-28 w-28"
+                                    />
               </Link>
             </div>
           </div>

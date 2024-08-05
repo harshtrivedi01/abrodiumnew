@@ -1,11 +1,11 @@
 
 import { Link } from "react-router-dom";
-
+import logo from "../../../Images/logo.png"
 const SidebarHeader = () => {
   return (
     <div className="pro-header">
       <Link to="/">
-        <img  src="/images/logo.svg" alt="brand" />
+        <img  src={logo} alt="brand" />
       </Link>
       {/* End logo */}
 

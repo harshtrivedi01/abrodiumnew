@@ -4,7 +4,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderNavContent from "../header/HeaderNavContent";
-
+import logo from "../../Images/logo.png"
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
@@ -37,15 +37,15 @@ const Header = () => {
         {/* End .nav-outer */}
 
         <div className="logo-box">
-          <div className="logo">
-            <Link to="/">
+        <div className="me-10">
+              <Link to="/">
               <img
-               
-                src="/images/logo.svg"
-                alt="brand"
-              />
-            </Link>
-          </div>
+                                        alt="brand"
+                                        src={logo}
+                                       className="h-28 w-28"
+                                    />
+              </Link>
+            </div>
         </div>
         {/* End .logo-box */}
 

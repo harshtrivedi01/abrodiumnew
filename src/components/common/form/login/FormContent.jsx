@@ -4,7 +4,7 @@ import LoginWithSocial from "./LoginWithSocial";
 const FormContent = () => {
   return (
     <div className="form-inner">
-      <h3>Login to Superio</h3>
+      <h3>Login to Sentry Spot</h3>
 
       {/* <!--Login Form--> */}
       <form method="post">
@@ -36,6 +36,18 @@ const FormContent = () => {
             <a href="#" className="pwd">
               Forgot password?
             </a>
+          </div>
+        </div>
+
+        <div className="form-group">
+          <div className="field-outer">
+            <div className="input-group checkboxes square">
+              <input type="checkbox" name="service-me" id="service" required />
+              <label htmlFor="service" className="service">
+                <span className="custom-checkbox">By using our Services, you agree to our terms of use</span> 
+              </label>
+            </div>
+            
           </div>
         </div>
         {/* forgot password */}

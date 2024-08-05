@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import MobileSidebar from "./mobile-sidebar";
-
+import logo from "../../Images/logo.png"
 
 const MobileMenu = () => {
   return (
@@ -11,15 +11,15 @@ const MobileMenu = () => {
         <div className="inner-box">
           <div className="nav-outer">
             <div className="logo-box">
-              <div className="logo">
-                <Link to="/">
-                  <img
-                   
-                    src="/images/logo.svg"
-                    alt="brand"
-                  />
-                </Link>
-              </div>
+            <div className="me-10">
+              <Link to="/">
+              <img
+                                        alt="brand"
+                                        src={logo}
+                                       className="h-28 w-28"
+                                    />
+              </Link>
+            </div>
             </div>
             {/* End .logo-box */}
 

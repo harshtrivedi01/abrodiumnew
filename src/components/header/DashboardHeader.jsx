@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import employerMenuData from "../../data/employerMenuData";
 import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
-
+import logo from "../../Images/logo.png"
 import { useLocation } from "react-router-dom";
 
 const DashboardHeader = () => {
@@ -40,15 +40,15 @@ const DashboardHeader = () => {
                     {/* <!--Nav Outer --> */}
                     <div className="nav-outer">
                         <div className="logo-box">
-                            <div className="logo">
-                                <Link to="/">
-                                    <img
+                        <div className="me-10">
+              <Link to="/">
+              <img
                                         alt="brand"
-                                        src="/images/logo.svg"
-                                       
+                                        src={logo}
+                                       className="h-28 w-28"
                                     />
-                                </Link>
-                            </div>
+              </Link>
+            </div>
                         </div>
                         {/* End .logo-box */}
 

@@ -1,4 +1,4 @@
-
+import logo from "../../Images/logo.png"
 
 
 import { Link } from "react-router-dom";
@@ -33,13 +33,13 @@ const DefaulHeader2 = () => {
         {/* <!--Nav Outer --> */}
         <div className="nav-outer">
           <div className="logo-box">
-            <div className="logo">
+            <div className="me-10">
               <Link to="/">
-                <img
-                 
-                  src="/images/logo.svg"
-                  alt="brand"
-                />
+              <img
+                                        alt="brand"
+                                        src={logo}
+                                       className="h-28 w-28"
+                                    />
               </Link>
             </div>
           </div>

@@ -26,7 +26,7 @@ const HeaderNavContent = () => {
           {/* current dropdown */}
           <li
             className={`${
-              isActiveParent(homeItems, pathname) ? "current" : ""
+              isActiveParent(homeItems, pathname) ? "" : ""
             } dropdown`}
           >
             <span>Home</span>
@@ -56,18 +56,64 @@ const HeaderNavContent = () => {
               </div>
             </div>
           </li>
-          {/* End homepage menu items */}
+          <li
+            className={`${
+              isActiveParent(homeItems, pathname) ? "current" : ""
+            } dropdown`}
+          >
+            <span>AI Resume</span>
+            <div className="mega-menu">
+              <div className="mega-menu-bar row pt-0">
+              <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/employers-dashboard/dashboard">
+                Resume Score
+                </Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/employers-dashboard/dashboard">
+                Auto Data Parsing
 
+
+                </Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/employers-dashboard/dashboard">
+                  Employers Dashboard
+                </Link>
+              </li>
+              </div>
+            </div>
+          </li>
+          {/* End homepage menu items */}
+          <Link to="/job-list-v7">
           <li
             className={`${
               isActiveParent(findJobItems, pathname) ? "current" : ""
-            } dropdown has-mega-menu`}
+            } dropdown has-mega-menu me-5`}
             id="has-mega-menu"
           >
-            <span>Find Jobs</span>
+            <span>Jobs</span>
             <div className="mega-menu">
               <div className="mega-menu-bar row">
-                {findJobItems.map((item) => (
+                {/*{findJobItems.map((item) => (
                   <div
                     className="column col-lg-3 col-md-3 col-sm-12"
                     key={item.id}
@@ -88,10 +134,10 @@ const HeaderNavContent = () => {
                       ))}
                     </ul>
                   </div>
-                ))}
+                ))} */}
               </div>
             </div>
-          </li>
+          </li></Link>
           {/* End findjobs menu items */}
 
           <li
@@ -104,7 +150,7 @@ const HeaderNavContent = () => {
           >
             <span>Employers</span>
             <ul>
-              {employerItems.map((item) => (
+              {/*{employerItems.map((item) => (
                 <li className="dropdown" key={item.id}>
                   <span
                     className={
@@ -130,7 +176,29 @@ const HeaderNavContent = () => {
                     ))}
                   </ul>
                 </li>
-              ))}
+              ))} */}
+               <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/employers-list-v2">
+                  Employers List
+                </Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/employers-single-v1/1">
+                  Employers Listing detail page
+                </Link>
+              </li>
               <li
                 className={
                   pathname?.includes("/employers-dashboard")
@@ -158,7 +226,7 @@ const HeaderNavContent = () => {
           >
             <span>Candidates</span>
             <ul>
-              {candidateItems.map((item) => (
+              {/*{candidateItems.map((item) => (
                 <li className="dropdown" key={item.id}>
                   <span
                     className={
@@ -184,7 +252,29 @@ const HeaderNavContent = () => {
                     ))}
                   </ul>
                 </li>
-              ))}
+              ))} */}
+              <li
+                className={
+                  pathname?.includes("/candidates-dashboard/")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/candidates-list-v2">
+                  Candidates List
+                </Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/candidates-dashboard/")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/candidates-single-v1/1">
+                  Candidates Listing detail page
+                </Link>
+              </li>
               <li
                 className={
                   pathname?.includes("/candidates-dashboard/")
@@ -205,7 +295,7 @@ const HeaderNavContent = () => {
               isActiveParentChaild(blogItems, pathname) ? "current" : ""
             } dropdown`}
           >
-            <span>Blog</span>
+            <span>Resources</span>
             <ul>
               {blogItems.map((item, i) => (
                 <li
@@ -221,7 +311,7 @@ const HeaderNavContent = () => {
           </li>
           {/* End Blog menu items */}
 
-          <li
+          {/*<li
             className={`${
               isActiveParentChaild(pageItems, pathname) ||
               isActiveParentChaild(shopItems[0].items, pathname)
@@ -269,7 +359,7 @@ const HeaderNavContent = () => {
                 </li>
               ))}
             </ul>
-          </li>
+          </li> */}
           {/* End Pages menu items */}
         </ul>
       </nav>

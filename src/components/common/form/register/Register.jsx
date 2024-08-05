@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <div className="form-inner">
-      <h3>Create a Free Superio Account</h3>
+      <h3>Create a Free SentrySpot Account</h3>
 
       <Tabs>
         <div className="form-group register-dual">
@@ -26,7 +26,9 @@ const Register = () => {
               </button>
             </Tab>
           </TabList>
+
         </div>
+        
         {/* End .form-group */}
 
         <TabPanel>
@@ -36,7 +38,9 @@ const Register = () => {
 
         <TabPanel>
           <Form />
+          
         </TabPanel>
+        
         {/* End Employer Form */}
       </Tabs>
       {/* End form-group */}

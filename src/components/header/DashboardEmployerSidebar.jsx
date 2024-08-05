@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import employerMenuData from "../../data/employerMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
-
+import logo from "../../Images/logo.png"
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "../../features/toggle/toggleSlice";
 

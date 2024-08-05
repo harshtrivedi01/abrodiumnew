@@ -16,6 +16,17 @@ const FormContent = () => {
           placeholder="Password"
         />
       </div>
+      <div className="form-group">
+         
+            <div className="input-group checkboxess ">
+              <input type="checkbox" name="" id=""  required/>
+              <label htmlFor="service" className="service" >
+                <span className="custom-checkbox ms-2">By using our Services, you agree to our terms of use</span> 
+              </label>
+            </div>
+            
+          
+        </div>
       {/* password */}
 
       <div className="form-group">
@@ -23,6 +34,7 @@ const FormContent = () => {
           Register
         </button>
       </div>
+      
       {/* login */}
     </form>
   );
