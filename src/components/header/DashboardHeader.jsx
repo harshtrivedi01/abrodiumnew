@@ -29,7 +29,7 @@ const DashboardHeader = () => {
 
     return (
         // <!-- Main Header-->
-        <header
+        <header style={{backgroundColor:"#4C3957"}}
             className={`main-header header-shaddow  ${
                 navbar ? "fixed-header " : ""
             }`}
@@ -45,7 +45,7 @@ const DashboardHeader = () => {
               <img
                                         alt="brand"
                                         src={logo}
-                                       className="h-28 w-28"
+                                       className=" w-28"
                                     />
               </Link>
             </div>

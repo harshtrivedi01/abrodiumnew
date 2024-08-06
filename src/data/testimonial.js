@@ -1,7 +1,7 @@
 const testimonials = [
   {
     id: 1,
-    feedback: "Good theme",
+    feedback: "Good work",
     feedbackText: `Without JobHunt i’d be homeless, they found me a job and got me
     sorted out quickly with everything! Can’t quite… The Mitech team
     works really hard to ensure high level of quality`,

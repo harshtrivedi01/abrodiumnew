@@ -20,7 +20,7 @@ const About = () => {
             <li>Capitalize on low hanging fruit to identify</li>
             <li>But I must explain to you how all this</li>
           </ul>
-          <Link to="/register" className="theme-btn btn-style-one bg-blue">
+          <Link to="/" className="theme-btn btn-style-one bg-blue">
             <span className="btn-title">Get Started</span>
           </Link>
         </div>

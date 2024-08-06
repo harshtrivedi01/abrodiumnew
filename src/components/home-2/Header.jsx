@@ -28,18 +28,18 @@ const Header = () => {
         navbar ? "fixed-header animated slideInDown" : ""
       }`}
     >
-      <div className="auto-container">
+      <div className="auto-container ">
         {/* <!-- Main box --> */}
-        <div className="main-box">
+        <div className="main-box ">
           {/* <!--Nav Outer --> */}
-          <div className="nav-outer">
-            <div className="logo-box">
+          <div className="nav-outer ">
+            <div className="logo-box ">
             <div className="me-10">
               <Link to="/">
               <img
                                         alt="brand"
                                         src={logo}
-                                       className="h-28 w-28"
+                                       className="h-10 w-28"
                                     />
               </Link>
             </div>

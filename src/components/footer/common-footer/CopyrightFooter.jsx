@@ -5,8 +5,8 @@ const CopyrightFooter = () => {
     <div className="footer-bottom">
       <div className="auto-container">
         <div className="outer-box">
-          <div className="copyright-text">
-            © {new Date().getFullYear()} SentrySpot by{" "}
+          <div className="copyright-text text-white">
+            © {new Date().getFullYear()} abroadium by{" "}
             
              All Right Reserved.
           </div>

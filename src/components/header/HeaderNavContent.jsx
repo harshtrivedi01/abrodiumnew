@@ -21,13 +21,13 @@ const HeaderNavContent = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <nav className="nav main-menu">
-        <ul className="navigation" id="navbar">
+      <nav className="nav main-menu text-white font-semibold">
+        <ul className="navigation text-white font-semibold" id="navbar">
           {/* current dropdown */}
-          <li
+         {/* <li
             className={`${
               isActiveParent(homeItems, pathname) ? "" : ""
-            } dropdown`}
+            } dropdown `}
           >
             <span>Home</span>
             <div className="mega-menu">
@@ -55,23 +55,26 @@ const HeaderNavContent = () => {
                 ))}
               </div>
             </div>
-          </li>
+          </li> */}
           <li
             className={`${
-              isActiveParent(homeItems, pathname) ? "current" : ""
+              isActiveParent(employerItems, pathname) ||
+              pathname?.split("/")[1] === "employers-dashboard"
+                ? "current"
+                : ""
             } dropdown`}
-          >
-            <span>AI Resume</span>
-            <div className="mega-menu">
-              <div className="mega-menu-bar row pt-0">
-              <li
+          ><Link to="https://resumelanding-nandnigits-projects.vercel.app/">
+            <span className="text-white " style={{fontWeight:"600"}}>AI Resume</span></Link>
+            <ul>
+             
+               <li
                 className={
                   pathname?.includes("/employers-dashboard")
                     ? "current"
                     : ""
                 }
               >
-                <Link to="/employers-dashboard/dashboard">
+                <Link to="/employers-list-v2">
                 Resume Score
                 </Link>
               </li>
@@ -82,9 +85,8 @@ const HeaderNavContent = () => {
                     : ""
                 }
               >
-                <Link to="/employers-dashboard/dashboard">
+                <Link to="/employers-single-v1/1">
                 Auto Data Parsing
-
 
                 </Link>
               </li>
@@ -99,8 +101,7 @@ const HeaderNavContent = () => {
                   Employers Dashboard
                 </Link>
               </li>
-              </div>
-            </div>
+            </ul>
           </li>
           {/* End homepage menu items */}
           <Link to="/job-list-v7">
@@ -110,7 +111,7 @@ const HeaderNavContent = () => {
             } dropdown has-mega-menu me-5`}
             id="has-mega-menu"
           >
-            <span>Jobs</span>
+            <span className="text-white font-semibold">Jobs</span>
             <div className="mega-menu">
               <div className="mega-menu-bar row">
                 {/*{findJobItems.map((item) => (
@@ -148,7 +149,7 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>Employers</span>
+            <span className="text-white " style={{fontWeight:"600"}}>Employers</span>
             <ul>
               {/*{employerItems.map((item) => (
                 <li className="dropdown" key={item.id}>
@@ -224,7 +225,7 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>Candidates</span>
+            <span className="text-white font-semibold" style={{fontWeight:"600"}}>Candidates</span>
             <ul>
               {/*{candidateItems.map((item) => (
                 <li className="dropdown" key={item.id}>
@@ -295,7 +296,7 @@ const HeaderNavContent = () => {
               isActiveParentChaild(blogItems, pathname) ? "current" : ""
             } dropdown`}
           >
-            <span>Resources</span>
+            <span className="text-white font-semibold" style={{fontWeight:"600"}}>Resources</span>
             <ul>
               {blogItems.map((item, i) => (
                 <li

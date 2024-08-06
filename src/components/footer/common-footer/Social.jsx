@@ -11,7 +11,8 @@ const Social = () => {
         <a
           href={item.link}
           target="_blank"
-          rel="noopener noreferrer"
+          className="text-white"
+          rel="noopener noreferrer "
           key={item.id}
         >
           <i className={`fab ${item.icon}`}></i>

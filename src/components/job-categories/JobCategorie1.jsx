@@ -10,8 +10,8 @@ const JobCategorie1 = () => {
           key={item.id}
         >
           <div className="inner-box">
-            <div className="content">
-              <span className={`icon ${item.icon}`}></span>
+            <div className="content ">
+              <span className={`icon bg-purple-900 ${item.icon}`}></span>
               <h4>
                 <Link to="/job-list-v1">{item.catTitle}</Link>
               </h4>

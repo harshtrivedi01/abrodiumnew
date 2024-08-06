@@ -17,7 +17,7 @@ import Testimonial from "../testimonial/Testimonial";
 const index = () => {
   return (
     <>
-      <LoginPopup />
+    <LoginPopup />
       {/* End Login Popup Modal */}
 
       <DefaulHeader2 />
@@ -29,11 +29,11 @@ const index = () => {
       <Hero1 />
       {/* End Hero Section */}
 
-      <section className="job-categories ui-job-categories">
+      <section className="job-categories ui-job-categories bg-purple-200">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Popular Job Categories</h2>
-            <div className="text">2020 jobs live - 293 added today.</div>
+            <div className="font-bold text-3xl">Popular Job Categories</div>
+            <div className="text">100+ Jobs Live & Counting            </div>
           </div>
 
           <div
@@ -51,9 +51,10 @@ const index = () => {
       <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Featured Jobs</h2>
+            <div className="text-3xl font-bold">AI Featured Jobs</div>
             <div className="text">
-              Know your worth and find the job that qualify your life
+            Apply with Confidence with our Match & Apply Feature
+
             </div>
           </div>
 

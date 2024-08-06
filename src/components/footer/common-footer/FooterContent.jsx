@@ -6,16 +6,16 @@ const FooterContent = () => {
     <>
       {footerContent.map((item) => (
         <div
-          className="footer-column col-lg-3 col-md-6 col-sm-12"
+          className="footer-column col-lg-3 col-md-6 col-sm-12 text-white"
           key={item.id}
         >
-          <div className="footer-widget links-widget">
-            <h4 className="widget-title">{item.title}</h4>
-            <div className="widget-content">
-              <ul className="list">
+          <div className="footer-widget links-widget text-white">
+            <h4 className="widget-title text-white">{item.title}</h4>
+            <div className="widget-content text-white">
+              <ul className="list text-white">
                 {item?.menuList?.map((menu, i) => (
                   <li key={i}>
-                    <Link to={menu.route}>{menu.name}</Link>
+                    <Link className="text-white" to={menu.route}>{menu.name}</Link>
                   </li>
                 ))}
               </ul>

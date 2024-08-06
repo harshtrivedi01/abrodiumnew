@@ -4,7 +4,7 @@ import LoginWithSocial from "./LoginWithSocial";
 const FormContent = () => {
   return (
     <div className="form-inner">
-      <h3>Login to Sentry Spot</h3>
+      <h3>Login to Abr</h3>
 
       {/* <!--Login Form--> */}
       <form method="post">

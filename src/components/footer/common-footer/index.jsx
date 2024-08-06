@@ -5,31 +5,31 @@ import logo from "../../../Images/logo.png"
 import { Link } from "react-router-dom";
 const index = ({ footerStyle = "" }) => {
   return (
-    <footer className={`main-footer ${footerStyle}`}>
-      <div className="auto-container">
+    <footer className={`main-footer ${footerStyle} text-white`} style={{backgroundColor:"#4C3957"}} >
+      <div className="auto-container text-white">
         {/* <!--Widgets Section--> */}
-        <div className="widgets-section" data-aos="fade-up">
-          <div className="row">
-            <div className="big-column col-xl-4 col-lg-3 col-md-12">
-              <div className="footer-column about-widget">
+        <div className="widgets-section" data-aos="fade-up text-white">
+          <div className="row text-white">
+            <div className="big-column col-xl-4 col-lg-3 col-md-12 text-white">
+              <div className="footer-column about-widget text-white">
               <div className="me-10">
               <Link to="/">
               <img
                                         alt="brand"
                                         src={logo}
-                                       className="h-28 w-28"
+                                       className=" w-28"
                                     />
               </Link>
             </div>
-                <p className="phone-num">
+                <p className="phone-num text-white">
                   <span>Call us </span>
-                  <a href="thebeehost@support.com">123 456 7890</a>
+                  <a href="thebeehost@support.com" className="text-white">123 456 7890</a>
                 </p>
-                <p className="address">
+                <p className="address text-white">
                   329 Queensberry Street, North Melbourne VIC
                   <br /> 3051, Australia. <br />
-                  <a href="mailto:support@sentryspot.com" className="email">
-                    support@sentryspot.com
+                  <a href="mailto:support@abroadium.com" className="email text-white">
+                    support@abroadium.com
                   </a>
                 </p>
               </div>

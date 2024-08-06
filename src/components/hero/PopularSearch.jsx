@@ -1,10 +1,9 @@
 const PopularSearch = () => {
   return (
-    <div className="popular-searches" data-aos="fade-up" data-aos-delay="1000">
-      <span className="title">Popular Searches : </span>
-      <a href="#">Designer</a>, <a href="#">Developer</a>, <a href="#">Web</a>,
-      <a href="#"> IOS</a>, <a href="#">PHP</a>, <a href="#">Senior</a>,
-      <a href="#"> Engineer</a>,
+    <div className="popular-searches font-semibold" data-aos="fade-up" data-aos-delay="1000">
+      <span className=" font-bold">Popular Searches :</span>
+      <a href="#" className=" font-semibold"> Jobs </a>| <a href="#" className=" font-semibold">AI Resume </a>| <a href="#" className=" font-semibold">Feed </a>|
+      <a href="#" className=" font-semibold"> Abroadium ID </a>| <a href="#" className=" font-semibold"> AI </a> 
     </div>
   );
 };

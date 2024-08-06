@@ -23,22 +23,22 @@ const DefaulHeader2 = () => {
 
   return (
     // <!-- Main Header-->
-    <header
-      className={`main-header  ${
+    <header style={{backgroundColor:"#4C3957"}}
+      className={`main-header  text-white font-semibold  ${
         navbar ? "fixed-header animated slideInDown" : ""
       }`}
     >
       {/* <!-- Main box --> */}
-      <div className="main-box">
+      <div className="main-box text-white font-semibold">
         {/* <!--Nav Outer --> */}
         <div className="nav-outer">
-          <div className="logo-box">
+          <div className="">
             <div className="me-10">
               <Link to="/">
               <img
                                         alt="brand"
                                         src={logo}
-                                       className="h-28 w-28"
+                                       className="h- w-40"
                                     />
               </Link>
             </div>
@@ -52,22 +52,22 @@ const DefaulHeader2 = () => {
 
         <div className="outer-box">
           {/* <!-- Add Listing --> */}
-          <Link to="/candidates-dashboard/cv-manager" className="upload-cv">
+          <Link to="/candidates-dashboard/cv-manager" style={{fontWeight:"600"}} className="upload-cv text-white font-semibold font-semibold">
             Upload your CV
           </Link>
           {/* <!-- Login/Register --> */}
           <div className="btn-box">
             <a
-              href="#"
-              className="theme-btn btn-style-three call-modal"
+          
+              className="theme-btn btn-style-three call-modal  text-blue-950"
               data-bs-toggle="modal"
-              data-bs-target="#loginPopupModal"
-            >
+            
+            > {/* data-bs-target="#loginPopupModal" */}
               Login / Register
             </a>
             <Link
               to="/employers-dashboard/post-jobs"
-              className="theme-btn btn-style-one"
+              className="theme-btn btn-style-one bg-blue-950 text-white font-semibold"
             >
               Job Post
             </Link>
