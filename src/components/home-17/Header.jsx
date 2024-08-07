@@ -55,7 +55,7 @@ const Header = () => {
             <div className="btn-box">
               <a
                 href="#"
-                className="theme-btn -outline-dark-blue -rounded call-modal"
+                className="theme-btn -outline-dark-blue -rounded call-modal "
                 data-bs-toggle="modal"
                 data-bs-target="#loginPopupModal"
               >
@@ -63,7 +63,7 @@ const Header = () => {
               </a>
               <Link
                 to="/employers-dashboard/post-jobs"
-                className="theme-btn -blue -rounded"
+                className="theme-btn bg-blue-950 text-white -rounded"
               >
                 Job Post
               </Link>

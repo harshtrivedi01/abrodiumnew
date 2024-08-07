@@ -30,10 +30,10 @@ const SearchForm = () => {
         <div className="form-group col-lg-3 col-md-12 col-sm-12 btn-box">
           <button
             type="submit"
-            className="theme-btn btn-style-one"
+            className="theme-btn btn-style-one bg-blue-950"
             onClick={() => navigate("/job-list-v1")}
           >
-            <span className="btn-title">Find Jobs</span>
+            <span className="btn-title ">Find Jobs</span>
           </button>
         </div>
       </div>
