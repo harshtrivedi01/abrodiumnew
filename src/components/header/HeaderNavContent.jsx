@@ -62,8 +62,7 @@ const HeaderNavContent = () => {
             } dropdown`}
           >
             <span>AI Resume</span>
-            <div className="mega-menu">
-              <div className="mega-menu-bar row pt-0">
+            <ul>
               <li
                 className={
                   pathname?.includes("/employers-dashboard")
@@ -71,7 +70,7 @@ const HeaderNavContent = () => {
                     : ""
                 }
               >
-                <Link to="/employers-dashboard/dashboard">
+                <Link to="/">
                 Resume Score
                 </Link>
               </li>
@@ -82,7 +81,7 @@ const HeaderNavContent = () => {
                     : ""
                 }
               >
-                <Link to="/employers-dashboard/dashboard">
+                <Link to="/">
                 Auto Data Parsing
 
 
@@ -95,49 +94,49 @@ const HeaderNavContent = () => {
                     : ""
                 }
               >
-                <Link to="/employers-dashboard/dashboard">
+                <Link to="/">
                   Employers Dashboard
                 </Link>
               </li>
-              </div>
-            </div>
+              </ul>
           </li>
           {/* End homepage menu items */}
-          <Link to="/job-list-v7">
           <li
             className={`${
-              isActiveParent(findJobItems, pathname) ? "current" : ""
-            } dropdown has-mega-menu me-5`}
-            id="has-mega-menu"
+              isActiveParent(employerItems, pathname) ||
+              pathname?.split("/")[1] === "employers-dashboard"
+                ? "current"
+                : ""
+            } dropdown`}
           >
             <span>Jobs</span>
-            <div className="mega-menu">
-              <div className="mega-menu-bar row">
-                {/*{findJobItems.map((item) => (
-                  <div
-                    className="column col-lg-3 col-md-3 col-sm-12"
-                    key={item.id}
-                  >
-                    <h3>{item.title}</h3>
-                    <ul>
-                      {item.items.map((menu, i) => (
-                        <li
-                          className={
-                            isActiveLink(menu.routePath, pathname)
-                              ? "current"
-                              : ""
-                          }
-                          key={i}
-                        >
-                          <Link to={menu.routePath}>{menu.name}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))} */}
-              </div>
-            </div>
-          </li></Link>
+            <ul>
+             
+               <li
+                className={
+                  pathname?.includes("/employers-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/job-list-v7">
+                  Job List
+                </Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/job-dashboard")
+                    ? "current"
+                    : ""
+                }
+              >
+                <Link to="/job-single-v1/1">
+                  Jobs Listing page
+                </Link>
+              </li>
+            
+            </ul>
+          </li>
           {/* End findjobs menu items */}
 
           <li
