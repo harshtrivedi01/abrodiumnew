@@ -13,7 +13,8 @@ import Hero1 from "../hero/hero-1";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
 import Testimonial from "../testimonial/Testimonial";
-
+import CookieConsent from 'react-cookie-consent';
+import logo from "../../Images/logo.png"
 const index = () => {
   return (
     <>
@@ -28,7 +29,18 @@ const index = () => {
 
       <Hero1 />
       {/* End Hero Section */}
-
+      <CookieConsent
+      location="bottom"
+      buttonText="Accept"
+      cookieName="myAwesomeCookieConsent"
+      style={{ background: "#2B373B" }}
+      buttonStyle={{ color: "white", fontSize: "23px", backgroundColor:"#1A3071" }}
+      expires={150}
+    >
+     
+    <span>  We use cookies to analyze our traffic, learn more about our users, using this information to help us design our website to better suit our users’ needs. Full details on our privacy policy can be found at:{" "}</span>
+      <span style={{ fontSize: "20px" }}>https://sentryspotfe.vercel.app/</span>
+    </CookieConsent>
       <section className="job-categories ui-job-categories">
         <div className="auto-container">
           <div className="sec-title text-center">

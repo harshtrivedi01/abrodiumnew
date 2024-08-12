@@ -21,7 +21,7 @@ const HeaderNavContent = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <nav className="nav main-menu">
+      <nav className="nav main-menu ">
         <ul className="navigation" id="navbar">
           {/* current dropdown */}
           <li
@@ -42,7 +42,7 @@ const HeaderNavContent = () => {
                         <li
                           className={
                             isActiveLink(menu.routePath, pathname)
-                              ? "current"
+                              ? ""
                               : ""
                           }
                           key={i}
@@ -58,7 +58,7 @@ const HeaderNavContent = () => {
           </li>
           <li
             className={`${
-              isActiveParent(homeItems, pathname) ? "current" : ""
+              isActiveParent(homeItems, pathname) ? "text-blue-950" : ""
             } dropdown`}
           >
             <span>AI Resume</span>

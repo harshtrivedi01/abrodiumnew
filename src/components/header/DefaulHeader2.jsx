@@ -23,9 +23,9 @@ const DefaulHeader2 = () => {
 
   return (
     // <!-- Main Header-->
-    <header
-      className={`main-header  ${
-        navbar ? "fixed-header animated slideInDown" : ""
+    <header 
+      className={`main-header font-bold ${
+        navbar ? "fixed-header animated slideInDown " : ""
       }`}
     >
       {/* <!-- Main box --> */}
@@ -59,7 +59,7 @@ const DefaulHeader2 = () => {
           <div className="btn-box">
             <a
               href="#"
-              className="theme-btn btn-style-three call-modal  text-blue-950"
+              className="theme-btn btn-style-three call-modal p-3   text-blue-950"
               data-bs-toggle="modal"
               data-bs-target="#loginPopupModal"
             >

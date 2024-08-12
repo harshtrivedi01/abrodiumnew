@@ -105,6 +105,7 @@ import ShopSingleDyanmic from "./pages/shop/shop-single";
 import CartPage from "./pages/shop/cart";
 import CheckoutPage from "./pages/shop/checkout";
 import OrderCompletedPage from "./pages/shop/order-completed";
+
 function App() {
   useEffect(() => {
     Aos.init({
