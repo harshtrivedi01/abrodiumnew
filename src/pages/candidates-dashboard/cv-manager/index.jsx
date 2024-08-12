@@ -4,8 +4,8 @@ import CvManager from "@/components/dashboard-pages/candidates-dashboard/cv-mana
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: "CV Manager || Superio - Job Borad ReactJs Template",
-  description: "Superio - Job Borad ReactJs Template",
+  title: "CV Manager || sentryspot - Job Borad ReactJs Template",
+  description: "sentryspot - Job Borad ReactJs Template",
 };
 
 const CVMannagerPage = () => {

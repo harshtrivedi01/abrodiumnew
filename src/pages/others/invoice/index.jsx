@@ -5,9 +5,9 @@ import Invoice from "@/components/pages-menu/invoice";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Invoice || Superio - Job Borad ReactJs Template',
+  title: 'Invoice || sentryspot - Job Borad ReactJs Template',
   description:
-    'Superio - Job Borad ReactJs Template',
+    'sentryspot - Job Borad ReactJs Template',
   
 }
 

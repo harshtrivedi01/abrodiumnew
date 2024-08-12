@@ -4,8 +4,8 @@ import ShortListedJobs from "@/components/dashboard-pages/candidates-dashboard/s
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: "Short ListedJobs || Superio - Job Borad ReactJs Template",
-  description: "Superio - Job Borad ReactJs Template",
+  title: "Short ListedJobs || sentryspot - Job Borad ReactJs Template",
+  description: "sentryspot - Job Borad ReactJs Template",
 };
 
 const ShortListedJobsPage = () => {

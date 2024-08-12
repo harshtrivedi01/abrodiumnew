@@ -5,9 +5,9 @@ import Terms from "@/components/pages-menu/terms";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Terms || Superio - Job Borad ReactJs Template',
+  title: 'Terms || sentryspot - Job Borad ReactJs Template',
   description:
-    'Superio - Job Borad ReactJs Template',
+    'sentryspot - Job Borad ReactJs Template',
   
 }
 
