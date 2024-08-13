@@ -51,12 +51,12 @@ const index = () => {
               <ul className="bottom-links">
                 <li>
                   <a
-                    href="https://themeforest.net/user/ib-themes"
+                    href=""
                     target="_blank"
                     rel="noopener noreferrer"
                     className="link"
                   >
-                    www.ibthemespro.com
+                    www.sentryspot.com
                   </a>
                 </li>
                 <li>
