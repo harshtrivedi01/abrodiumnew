@@ -105,6 +105,9 @@ import CartPage from "./pages/shop/cart";
 import CheckoutPage from "./pages/shop/checkout";
 import OrderCompletedPage from "./pages/shop/order-completed";
 
+// new routes
+import SentryPage from "@/pages/sentry-spot-id/index";
+
 function App() {
   useEffect(() => {
     Aos.init({
@@ -184,8 +187,11 @@ function App() {
                   path="candidates-list-v1"
                   element={<CandidateListPage1 />}
                 />
-                {/* <Route path="candidates-list-v2" element={<CandidateListPage2 />} />
-                  <Route path="candidates-list-v3" element={<CandidateListPage3 />} />
+                <Route
+                  path="candidates-list-v2"
+                  element={<CandidateListPage2 />}
+                />
+                {/* <Route path="candidates-list-v3" element={<CandidateListPage3 />} />
                   <Route path="candidates-list-v4" element={<CandidateListPage4 />} />
                   <Route path="candidates-list-v5" element={<CandidateListPage5 />} /> */}
 
@@ -205,6 +211,8 @@ function App() {
                 />
 
                 {/* <Route path="about" element={<AboutPage />} /> */}
+                <Route path="sentry-spot" element={<SentryPage />} />
+
                 <Route path="pricing" element={<PricingPage />} />
                 <Route path="faq" element={<FaqPage />} />
                 <Route path="terms" element={<TermsPage />} />

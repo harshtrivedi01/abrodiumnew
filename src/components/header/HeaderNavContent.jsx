@@ -27,7 +27,7 @@ const HeaderNavContent = () => {
               isActiveParent(homeItems, pathname) ? "" : ""
             } dropdown`}
           >
-            <Link to={"/"}>Home</Link>
+            {/* <Link to={"/"}>Home</Link> */}
             {/* <div className="mega-menu">
               <div className="mega-menu-bar row pt-0">
                 {homeItems.map((item) => (
@@ -66,6 +66,13 @@ const HeaderNavContent = () => {
                   pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
+                <Link to="/">Resume Buider</Link>
+              </li>
+              <li
+                className={
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
+                }
+              >
                 <Link to="/">Resume Score</Link>
               </li>
               <li
@@ -73,14 +80,14 @@ const HeaderNavContent = () => {
                   pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/">Auto Data Parsing</Link>
+                <Link to="/">Resume Enhancer</Link>
               </li>
               <li
                 className={
                   pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/">Employers Dashboard</Link>
+                <Link to="/">Match & Apply</Link>
               </li>
             </ul>
           </li>
@@ -100,14 +107,15 @@ const HeaderNavContent = () => {
                   pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/job-list-v7">Job List</Link>
+                <Link to="/job-list-v7">Search by location</Link>
               </li>
               <li
                 className={
                   pathname?.includes("/job-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/job-single-v1/1">Jobs Listing page</Link>
+                {/* <Link to="/job-single-v1/1">Recent Jobs</Link> */}
+                <Link to="/job-list-v7">Recent Jobs</Link>
               </li>
             </ul>
           </li>
@@ -121,7 +129,7 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>Employers</span>
+            <span>SentrySpot ID</span>
             <ul>
               {/*{employerItems.map((item) => (
                 <li className="dropdown" key={item.id}>
@@ -151,8 +159,13 @@ const HeaderNavContent = () => {
                 </li>
               ))} */}
               <li
+                className={pathname?.includes("/sentry-spot") ? "current" : ""}
+              >
+                <Link to="/sentry-spot">sentryspot id </Link>
+              </li>
+              {/* <li
                 className={
-                  pathname?.includes("/employers-dashboard") ? "current" : ""
+                  pathname?.includes("/employers-d  ashboard") ? "current" : ""
                 }
               >
                 <Link to="/employers-list-v2">Employers List</Link>
@@ -174,12 +187,12 @@ const HeaderNavContent = () => {
                 <Link to="/employers-dashboard/dashboard">
                   Employers Dashboard
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           {/* End Employers menu items */}
 
-          <li
+          {/* <li
             className={`${
               isActiveParent(candidateItems, pathname) ||
               pathname?.split("/")[1] === "candidates-dashboard"
@@ -189,9 +202,9 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>Candidates</span>
+            <span>Courses</span>
             <ul>
-              {/*{candidateItems.map((item) => (
+              {candidateItems.map((item) => (
                 <li className="dropdown" key={item.id}>
                   <span
                     className={
@@ -217,22 +230,20 @@ const HeaderNavContent = () => {
                     ))}
                   </ul>
                 </li>
-              ))} */}
+              ))}
               <li
                 className={
                   pathname?.includes("/candidates-dashboard/") ? "current" : ""
                 }
               >
-                <Link to="/candidates-list-v2">Candidates List</Link>
+                <Link to="/candidates-list-v2">Trending courses</Link>
               </li>
               <li
                 className={
                   pathname?.includes("/candidates-dashboard/") ? "current" : ""
                 }
               >
-                <Link to="/candidates-single-v1/1">
-                  Candidates Listing detail page
-                </Link>
+                <Link to="/candidates-dashboard/">Security courses</Link>
               </li>
               <li
                 className={
@@ -244,7 +255,7 @@ const HeaderNavContent = () => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           {/* End Candidates menu items */}
 
           <li
@@ -252,7 +263,7 @@ const HeaderNavContent = () => {
               isActiveParentChaild(blogItems, pathname) ? "current" : ""
             } dropdown`}
           >
-            <Link to={"/"}> Resources</Link>
+            <Link to={"https://blog.sentryspot.co.uk/"}> Resources</Link>
             {/* <ul>
               {blogItems.map((item, i) => (
                 <li
@@ -267,6 +278,15 @@ const HeaderNavContent = () => {
             </ul> */}
           </li>
           {/* End Blog menu items */}
+
+          {/* reposting btn */}
+          <li className="border h-[80%] p-0 m-0 "></li>
+          <li className=" hover:bg-slate-200  p-2 rounded-md ml-2">
+            <Link to="/">
+              {" "}
+              <span className="font-light"> Recruiting</span>? Post a job{" "}
+            </Link>
+          </li>
 
           {/*<li
             className={`${
@@ -325,3 +345,9 @@ const HeaderNavContent = () => {
 };
 
 export default HeaderNavContent;
+{
+  /* <Link to="/candidates-single-v1/1">Security courses</Link> */
+}
+{
+  (" ");
+}
