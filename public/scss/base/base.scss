@@ -41,7 +41,7 @@ body {
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
-   font-family: 'Chivo', sans-serif;
+  font-family: "Chivo", sans-serif;
   font-style: normal;
 }
 
@@ -89,7 +89,8 @@ button {
 p,
 .text {
   font-size: 15px;
-  color: #696969;
+  // color: #696969;
+  color: #545353;
   line-height: 24px;
   font-weight: 400;
   margin: 0;
