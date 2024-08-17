@@ -16,6 +16,8 @@ const HeroSection = () => {
               <a
                 href="#"
                 className="theme-btn btn-style-one bg-[#E60278]  hover:bg-[#E60278]"
+                data-bs-toggle="modal"
+                data-bs-target="#loginPopupModal"
               >
                 <span className="btn-title">Get Your SentrySpot ID now</span>
               </a>

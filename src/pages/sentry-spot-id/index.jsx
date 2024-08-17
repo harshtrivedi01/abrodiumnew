@@ -11,6 +11,7 @@ import HeroSection from "@/components/sentry-spot/hero";
 const SentryPage = () => {
   return (
     <>
+      <LoginPopup />
       <DefaulHeader2 />
       <MobileMenu />
       <LoginPopup />
@@ -29,7 +30,18 @@ const SentryPage = () => {
 
           <div className="row flex justify-center gap-5 flex-wrap py-2">
             {/* <JobFeatured1 /> */}
-            {["", ""].map((item) => (
+            {[
+              {
+                title: " Job recommendations made just for you",
+                content:
+                  "Get job recommendations that match your unique skills and experience and fit your industry and salary expectations.",
+              },
+              {
+                title: "Let great jobs come to you",
+                content:
+                  "Recruiters and employers can view your profile and contact you to discuss new opportunities – even when you’re not looking.",
+              },
+            ].map((item) => (
               <div
                 className="flex flex-col gap-3 col-lg-4 col-md-6 col-sm-12 items-center"
                 key={item.id}
@@ -43,12 +55,9 @@ const SentryPage = () => {
                 {/* <div className="content"> */}
                 {/* <span className={icon ${item.icon}}></span> */}
                 <p className="text-xl font-semibold text-center">
-                  Job recommendations made just for you
+                  {item?.title}
                 </p>
-                <p className="text-center">
-                  Get job recommendations that match your unique skills and
-                  experience and fit your industry and salary expectations.{" "}
-                </p>
+                <p className="text-center">{item?.content}</p>
                 {/* </div> */}
                 {/* </div> */}
               </div>
@@ -71,7 +80,18 @@ const SentryPage = () => {
 
           <div className="row flex justify-center gap-5 flex-wrap py-2">
             {/* <JobFeatured1 /> */}
-            {["", ""].map((item) => (
+            {[
+              {
+                title: " Manage your profile",
+                content:
+                  "Take control of how your profile appears to potential employers via three profile visibility settings.",
+              },
+              {
+                title: "Verify and stand out",
+                content:
+                  "Quickly and securely verify your work-related credentials in your profile and on job applications with SEEK Pass.",
+              },
+            ].map((item) => (
               <div
                 className="flex flex-col gap-3 col-lg-4 col-md-6 col-sm-12 items-center"
                 key={item.id}
@@ -85,12 +105,9 @@ const SentryPage = () => {
                 {/* <div className="content"> */}
                 {/* <span className={icon ${item.icon}}></span> */}
                 <p className="text-xl font-semibold text-center">
-                  Job recommendations made just for you
+                  {item?.title}
                 </p>
-                <p className="text-center">
-                  Get job recommendations that match your unique skills and
-                  experience and fit your industry and salary expectations.{" "}
-                </p>
+                <p className="text-center">{item?.content}</p>
                 {/* </div> */}
                 {/* </div> */}
               </div>
