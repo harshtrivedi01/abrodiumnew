@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import {
   blogItems,
@@ -29,8 +27,8 @@ const HeaderNavContent = () => {
               isActiveParent(homeItems, pathname) ? "" : ""
             } dropdown`}
           >
-            <span>Home</span>
-            <div className="mega-menu">
+            <Link to={"/"}>Home</Link>
+            {/* <div className="mega-menu">
               <div className="mega-menu-bar row pt-0">
                 {homeItems.map((item) => (
                   <div
@@ -54,7 +52,7 @@ const HeaderNavContent = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </li>
           <li
             className={`${
@@ -65,40 +63,26 @@ const HeaderNavContent = () => {
             <ul>
               <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/">
-                Resume Score
-                </Link>
+                <Link to="/">Resume Score</Link>
               </li>
               <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/">
-                Auto Data Parsing
-
-
-                </Link>
+                <Link to="/">Auto Data Parsing</Link>
               </li>
               <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/">
-                  Employers Dashboard
-                </Link>
+                <Link to="/">Employers Dashboard</Link>
               </li>
-              </ul>
+            </ul>
           </li>
           {/* End homepage menu items */}
           <li
@@ -111,30 +95,20 @@ const HeaderNavContent = () => {
           >
             <span>Jobs</span>
             <ul>
-             
-               <li
+              <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/job-list-v7">
-                  Job List
-                </Link>
+                <Link to="/job-list-v7">Job List</Link>
               </li>
               <li
                 className={
-                  pathname?.includes("/job-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/job-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/job-single-v1/1">
-                  Jobs Listing page
-                </Link>
+                <Link to="/job-single-v1/1">Jobs Listing page</Link>
               </li>
-            
             </ul>
           </li>
           {/* End findjobs menu items */}
@@ -176,22 +150,16 @@ const HeaderNavContent = () => {
                   </ul>
                 </li>
               ))} */}
-               <li
+              <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
-                <Link to="/employers-list-v2">
-                  Employers List
-                </Link>
+                <Link to="/employers-list-v2">Employers List</Link>
               </li>
               <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
                 <Link to="/employers-single-v1/1">
@@ -200,9 +168,7 @@ const HeaderNavContent = () => {
               </li>
               <li
                 className={
-                  pathname?.includes("/employers-dashboard")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/employers-dashboard") ? "current" : ""
                 }
               >
                 <Link to="/employers-dashboard/dashboard">
@@ -254,20 +220,14 @@ const HeaderNavContent = () => {
               ))} */}
               <li
                 className={
-                  pathname?.includes("/candidates-dashboard/")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/candidates-dashboard/") ? "current" : ""
                 }
               >
-                <Link to="/candidates-list-v2">
-                  Candidates List
-                </Link>
+                <Link to="/candidates-list-v2">Candidates List</Link>
               </li>
               <li
                 className={
-                  pathname?.includes("/candidates-dashboard/")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/candidates-dashboard/") ? "current" : ""
                 }
               >
                 <Link to="/candidates-single-v1/1">
@@ -276,9 +236,7 @@ const HeaderNavContent = () => {
               </li>
               <li
                 className={
-                  pathname?.includes("/candidates-dashboard/")
-                    ? "current"
-                    : ""
+                  pathname?.includes("/candidates-dashboard/") ? "current" : ""
                 }
               >
                 <Link to="/candidates-dashboard/dashboard">
@@ -294,8 +252,8 @@ const HeaderNavContent = () => {
               isActiveParentChaild(blogItems, pathname) ? "current" : ""
             } dropdown`}
           >
-            <span>Resources</span>
-            <ul>
+            <Link to={"/"}> Resources</Link>
+            {/* <ul>
               {blogItems.map((item, i) => (
                 <li
                   className={
@@ -306,7 +264,7 @@ const HeaderNavContent = () => {
                   <Link to={item.routePath}>{item.name}</Link>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </li>
           {/* End Blog menu items */}
 

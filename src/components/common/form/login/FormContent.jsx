@@ -9,7 +9,7 @@ const FormContent = () => {
       {/* <!--Login Form--> */}
       <form method="post">
         <div className="form-group">
-          <label>Username</label>
+          <label>Usernamedf</label>
           <input type="text" name="username" placeholder="Username" required />
         </div>
         {/* name */}
@@ -44,10 +44,11 @@ const FormContent = () => {
             <div className="input-group checkboxes square">
               <input type="checkbox" name="service-me" id="service" required />
               <label htmlFor="service" className="service">
-                <span className="custom-checkbox">By using our Services, you agree to our terms of use</span> 
+                <span className="custom-checkbox">
+                  By using our Services, you agree to our terms of use
+                </span>
               </label>
             </div>
-            
           </div>
         </div>
         {/* forgot password */}
