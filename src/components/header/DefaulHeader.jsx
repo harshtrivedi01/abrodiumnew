@@ -1,10 +1,7 @@
-
-
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderNavContent from "./HeaderNavContent";
-import logo from "../../Images/logo.png"
+import logo from "../../Images/logo.png";
 
 const DefaulHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -33,13 +30,9 @@ const DefaulHeader = () => {
         {/* <!--Nav Outer --> */}
         <div className="nav-outer">
           <div className="logo-box">
-          <div className="me-10">
+            <div className="me-10">
               <Link to="/">
-              <img
-                                        alt="brand"
-                                        src={logo}
-                                       className="h-28 w-28"
-                                    />
+                <img alt="brand" src={logo} className="h-28 w-28" />
               </Link>
             </div>
           </div>
