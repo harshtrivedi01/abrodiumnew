@@ -162,6 +162,9 @@ const HeaderNavContent = () => {
                 className={pathname?.includes("/sentry-spot") ? "current" : ""}
               >
                 <Link to="/sentry-spot">sentryspot id </Link>
+                <Link to="/candidates-dashboard/my-profile">
+                  Candidate profile{" "}
+                </Link>
               </li>
               {/* <li
                 className={

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import LoginWithSocial from "./LoginWithSocial";
-
+// import ReCAPTCHA from "react-google-recaptcha";
 const FormContent2 = () => {
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
   return (
     <div className="form-inner">
       <h3>Login to sentryspot</h3>
@@ -9,11 +12,10 @@ const FormContent2 = () => {
       {/* <!--Login Form--> */}
       <form method="post">
         <div className="form-group">
-          <label>Username</label>
+          <label>Username </label>
           <input type="text" name="username" placeholder="Username" required />
         </div>
         {/* name */}
-
         <div className="form-group">
           <label>Password</label>
           <input
@@ -24,7 +26,6 @@ const FormContent2 = () => {
           />
         </div>
         {/* password */}
-
         <div className="form-group">
           <div className="field-outer">
             <div className="input-group checkboxes square">
@@ -39,6 +40,7 @@ const FormContent2 = () => {
           </div>
         </div>
         {/* forgot password */}
+        {/* repatcha */}
 
         <div className="form-group">
           <button

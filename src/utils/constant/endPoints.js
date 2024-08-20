@@ -1,7 +1,7 @@
 // local
-export const BASE_URL_LOCAL = "";
+export const BASE_URL_LOCAL = "https://api.sentryspot.co.uk/";
 // production
-export const BASE_URL_PRODUCTION = "";
+export const BASE_URL_PRODUCTION = "https://api.sentryspot.co.uk/";
 // set base url
 export const BASE_URL = BASE_URL_PRODUCTION;
 
@@ -11,7 +11,7 @@ export const VERS = "v1";
 // Object containing endpoint slugs
 export const EndpointSlug = {
   // AUTHENTICATION
-  SIGNIN: "/login",
+  SIGNIN: "/api/jobseeker/auth/login",
   SIGNUP: "/signup",
 
   //   Dummy

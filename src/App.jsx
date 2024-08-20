@@ -107,6 +107,7 @@ import OrderCompletedPage from "./pages/shop/order-completed";
 
 // new routes
 import SentryPage from "@/pages/sentry-spot-id/index";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   useEffect(() => {
@@ -295,7 +296,7 @@ function App() {
           </BrowserRouter>
 
           {/* Toastify */}
-          <ToastContainer
+          {/* <ToastContainer
             position="bottom-right"
             autoClose={500}
             hideProgressBar={false}
@@ -306,7 +307,8 @@ function App() {
             draggable
             pauseOnHover
             theme="colored"
-          />
+          /> */}
+          <Toaster />
           {/* <!-- Scroll To Top --> */}
           <ScrollToTop />
         </div>
