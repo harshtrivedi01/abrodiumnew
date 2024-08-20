@@ -1,30 +1,69 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import LoginWithSocial from "./LoginWithSocial";
+import ReCAPTCHA from "react-google-recaptcha";
+import { userLogin } from "../../../../store/slices/auth/actions.js";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import ActionLoader from "@/components/loader/ActionLoader";
 
 const FormContent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading, userInfo, userToken, error, success, message } = useSelector(
+    (state) => state.auth
+  );
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(email, password);
+
+    if (email && password) {
+      dispatch(userLogin({ email: email, password: password }));
+    } else {
+      toast.error("Please enter details");
+    }
+  };
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
+  useEffect(() => {
+    if (userToken) navigate("/");
+  }, [userToken]);
   return (
     <div className="form-inner">
       <h3>Login to Sentry Spot</h3>
 
       {/* <!--Login Form--> */}
-      <form method="post">
+      <form onSubmit={submitHandler}>
         <div className="form-group">
-          <label>Usernamedf</label>
-          <input type="text" name="username" placeholder="Username" required />
+          <label>Email</label>
+          <input
+            type="text"
+            name="Email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
         {/* name */}
-
         <div className="form-group">
           <label>Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
         {/* password */}
-
         <div className="form-group">
           <div className="field-outer">
             <div className="input-group checkboxes square">
@@ -38,7 +77,6 @@ const FormContent = () => {
             </a>
           </div>
         </div>
-
         <div className="form-group">
           <div className="field-outer">
             <div className="input-group checkboxes square">
@@ -52,14 +90,20 @@ const FormContent = () => {
           </div>
         </div>
         {/* forgot password */}
+        <ReCAPTCHA
+          sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+          onChange={onChange}
+        />
 
-        <div className="form-group">
+        <div className="form-group mt-2">
           <button
-            className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
+            className="theme-btn btn-style-one"
+            onClick={submitHandler}
+            disabled={loading}
           >
-            Log In
+            {loading ? <ActionLoader /> : "Log In"}
           </button>
         </div>
         {/* login */}

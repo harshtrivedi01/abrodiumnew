@@ -5,6 +5,7 @@ import BreadCrumb from "../../BreadCrumb";
 import MyProfile from "./components/my-profile";
 import SocialNetworkBox from "./components/SocialNetworkBox";
 import ContactInfoBox from "./components/ContactInfoBox";
+import ProfileVisalbilty from "./components/my-profile/ProfileVisalbilty";
 import CopyrightFooter from "../../CopyrightFooter";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
@@ -60,6 +61,19 @@ const index = () => {
                   </div>
                 </div>
               </div>
+              {/* profile visalibilty select option */}
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Be found by empolyers</h4>
+                  </div>
+                  {/* End widget-title */}
+                  <div className="widget-content">
+                    <ProfileVisalbilty />
+                  </div>
+                </div>
+              </div>
+
               {/* <!-- Ls widget --> */}
 
               <div className="ls-widget">
