@@ -1,0 +1,214 @@
+.p .a .h1 .h2 .h3 .h4 .h5 .h6{
+    font-family: "chivo";
+    color:#2e3849;
+  
+  }
+  .container{
+      width: 1280px !important;
+  }
+  .header {
+      width: 100%;
+      padding: 10px;
+  }
+  .menu-bar {
+      width: 100%;
+      display: inline-block;
+  }
+  .left-menu {
+      width: 100%;
+      display: flex;
+      vertical-align: middle;
+      justify-content: flex-start;
+  }
+  .logo img{
+      width: 200px
+  }
+  .menu ul {
+      display: flex;
+      list-style: none;
+      margin: 20px;
+      margin-left: 0;
+      font-family: chivo;
+      vertical-align: middle;
+  }
+  .menu ul li {
+      font-size: 16px;
+      margin-right: 30px;
+  }
+  .menu ul li a{
+      color: #5a6881;
+  }
+  .menu ul li a:hover{
+      color: #003479;
+  }
+  .menu ul li a:active{
+      color: #003479;
+  }
+  .right-menu {
+      width: 100%;
+      margin-top: 20px;
+  }
+  .right-menu a{
+      color: #003479;
+      margin-right: 30px;
+      font-size: 16px;
+      font-family: chivo;
+  }
+  
+  .border {
+      border: 1px solid #003479;
+      padding: 10px 20px;
+      border-radius: 10px;
+  }
+  .border:hover{
+      background: #003479;
+      color: #fff;
+      text-decoration: none;
+  }
+  .sidepanel{
+      display: none;
+  }
+  .openbtn{
+      display: none;
+  }
+  .banner-image {
+      background-color: #003479;
+      border-radius: 20px;
+      padding: 20px;
+      display: inline-block;
+      height: 100%;
+  }
+  
+  .banner-txt h2{
+      font-size: 30px;
+      color:#fff;
+      font-family: chivo;
+  }
+  .banner-txt p{
+      color:#fff;
+      font-family: chivo;
+      font-size: 16px;
+      margin-top:15px	;
+  }
+  .banner-btn {
+      display: inline-block;
+      margin: 10px 0;
+  }
+  .banner-txt a {
+      background-color: #e60278;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-family: chivo;
+      text-decoration: none;
+  }
+  .banner-txt a:hover{
+      color: #003479;
+      background-color: #fff;
+      text-decoration: none;
+  }
+  .banner-imag {
+      text-align: center;
+      width: 100%;
+  }
+  .banner-imag img{
+      width: 100%;	
+  }
+  .services {
+      width: 100%;
+      text-align: center;
+      margin: 20px 0;
+  }
+  .heading {
+      width: 100%;
+      padding: 20px;
+  }
+  .heading h2{
+      color: #2e3849;
+      margin: 0;
+      font-size: 30px;
+      font-weight: 400;
+      font-family: chivo;
+  }
+  .services-section {
+      width: 100%;
+      display: ;
+      padding: 20px;
+  }
+  .color-box {
+      background: #003479;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0px 0px 7px 1px #2e3849;
+      height: 300px;
+  }
+  .color-box h2{
+      color: #fff;
+      font-size: 24px;
+      font-family: chivo;
+  }
+  .color-box p{
+      color: #fff;
+      font-family: chivo;
+      font-size: 16px;
+      font-weight: 300;
+  }
+  .color-img img{
+      width: 100px;
+  }
+  .text-box {
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      height: 300px;
+  }
+  .text-box h2{
+      color: #2e3849;
+      font-size: 24px;
+      font-family: chivo;
+  }
+  .text-box p{
+      color: #2e3849;
+      font-family: chivo;
+      font-size: 16px;
+      font-weight: 300;
+  }
+  .text-box a{
+      color: #003479;
+      font-family: chivo;
+      font-size: 16px;
+      font-weight: 500;	
+  }
+  .text-img img{
+      width: 100px;
+  }
+  .employer {
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      margin-bottom: 50px;
+  }
+  .employer-box {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      vertical-align: middle;
+      background-color: #f3f5f7;
+      border-radius: 20px;
+  }
+  .employer-box h2{
+      color: #2e3849;
+      font-size: 30px;
+      font-family: chivo;
+      margin: 0;
+      margin-top: 5px;
+  }
+  .employer-box a {
+      border: 1px solid #2e3849;
+      padding: 10px;
+      margin-left: 20px;
+      border-radius: 10px;
+      color: #2e3849;
+      font-size: 16px;
+  }
