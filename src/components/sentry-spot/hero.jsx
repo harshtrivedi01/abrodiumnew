@@ -117,7 +117,7 @@ const HeroSection = () => {
                   <img src={job} className="w-24 mx-auto mb-4" alt="Feature 2" />
                   <h2 className="font-semibold text-gray-800 text-lg md:text-xl">Let Great Jobs Come to You</h2>
                   <p className="mt-2 text-gray-600 text-sm md:text-base">
-                    Recruiters and employers can view your profile and contact you to discuss new opportunities – even when you’re not looking.
+                    Recruiters and employers can view your profile and contact you to discuss new opportunities - even when you’re not looking.
                   </p>
                 </div>
               </div>
@@ -146,7 +146,7 @@ const HeroSection = () => {
                   <p className="mt-2 text-gray-600 text-sm md:text-base">
                     Quickly and securely verify your work-related credentials in your profile and on job applications with SentrySpot Pass.
                   </p>
-                  <a href="#" className="text-blue-500 mt-2 inline-block">Learn about SEEK Pass</a>
+                  <a href="#" className="text-blue-500 mt-2 inline-block">Learn about SentrySpot Pass</a>
                 </div>
               </div>
             </div>
