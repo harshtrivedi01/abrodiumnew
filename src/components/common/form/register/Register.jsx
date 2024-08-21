@@ -1,6 +1,3 @@
-
-
-
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import LoginWithSocial from "./LoginWithSocial";
 import Form from "./FormContent";
@@ -11,7 +8,7 @@ const Register = () => {
     <div className="form-inner">
       <h3>Create a Free SentrySpot Account</h3>
 
-      <Tabs>
+      {/* <Tabs>
         <div className="form-group register-dual">
           <TabList className="btn-box row">
             <Tab className="col-lg-6 col-md-12">
@@ -26,24 +23,16 @@ const Register = () => {
               </button>
             </Tab>
           </TabList>
-
         </div>
-        
-        {/* End .form-group */}
 
         <TabPanel>
           <Form />
         </TabPanel>
-        {/* End cadidates Form */}
 
         <TabPanel>
-          <Form />
-          
         </TabPanel>
-        
-        {/* End Employer Form */}
-      </Tabs>
-      {/* End form-group */}
+      </Tabs> */}
+      <Form />
 
       <div className="bottom-box">
         <div className="text">

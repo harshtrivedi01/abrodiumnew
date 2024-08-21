@@ -55,10 +55,11 @@ export const AuthSlice = createSlice({
         state.loading = false;
         // state.userInfo = payload?.userInfo;
         state.message = payload?.message;
-        state.userToken = payload?.access_token;
-        state.userInfo = payload?.user_data;
+        state.userToken = payload?.data?.token;
+        state.userInfo = payload?.data;
         state.success = true;
         state.error = false;
+        window.location.href = "/";
       })
       .addCase(userLogin.rejected, (state, { payload }) => {
         state.loading = false;
@@ -74,8 +75,11 @@ export const AuthSlice = createSlice({
       .addCase(userSignUp.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.success = true;
-        state.message = payload?.msg;
+        state.message = payload?.message;
+        state.userToken = payload?.data?.token;
+        state.userInfo = payload?.data;
         state.error = false;
+        window.location.href = "/candidates-dashboard/my-profile";
       })
       .addCase(userSignUp.rejected, (state, { payload }) => {
         state.loading = false;

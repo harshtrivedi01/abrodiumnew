@@ -12,7 +12,7 @@ export const VERS = "v1";
 export const EndpointSlug = {
   // AUTHENTICATION
   SIGNIN: "/api/jobseeker/auth/login",
-  SIGNUP: "/signup",
+  SIGNUP: "/api/jobseeker/auth/signup",
 
   //   Dummy
   DUMMY_JSON: "https://jsonplaceholder.typicode.com/posts",

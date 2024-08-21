@@ -15,15 +15,19 @@ export const userLogin = createAsyncThunk(
         email,
         password,
       });
-      console.log("dasta", data);
 
       // store user's data in local storage
-      // localStorage.setItem(Constant.USER_TOKEN, data?.access_token);
-      // localStorage.setItem(Constant.USER_INFO, JSON.stringify(data?.user_data));
+      localStorage.setItem(Constant.USER_TOKEN, data?.data?.token);
+      localStorage.setItem(Constant.USER_INFO, JSON.stringify(data?.data));
+      toast.success(data?.message || "Success");
       return { ...data, message: "Successfully login" };
     } catch (error) {
+      toast.error(
+        error?.response?.data?.message ||
+          error?.response?.statusText ||
+          "Invalid credentials"
+      );
       if (error?.response?.status == 401) {
-        toast.error("Invalid credentials");
         return rejectWithValue(
           error?.response?.data?.detail || "Invalid credentials"
         );
@@ -40,15 +44,22 @@ export const userLogin = createAsyncThunk(
 
 export const userSignUp = createAsyncThunk(
   "auth/signup",
-  async ({ email, password }, { rejectWithValue }) => {
-    try {
-      const { data } = await instance.post(`${EndpointSlug.SIGNUP}`, {
-        username: email,
-        password,
-      });
+  async (body, { rejectWithValue }) => {
+    console.log("register dasta", body);
 
+    try {
+      const { data } = await instance.post(`${EndpointSlug.SIGNUP}`, body);
+      if (data?.status === "success") {
+        // store user's data in local storage
+        localStorage.setItem(Constant.USER_TOKEN, data?.data?.token);
+        localStorage.setItem(Constant.USER_INFO, JSON.stringify(data?.data));
+        toast.success(data?.message || "Success");
+      }
       return { ...data };
     } catch (error) {
+      toast.error(
+        error?.response?.data?.message || error?.response?.statusText
+      );
       if (error?.response?.status == 400) {
         return rejectWithValue(error?.response?.data?.detail || "Bad Request");
       } else if (error?.response?.status == 401) {
