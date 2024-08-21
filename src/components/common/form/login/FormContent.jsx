@@ -1,3 +1,4 @@
+"use client";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoginWithSocial from "./LoginWithSocial";
@@ -18,22 +19,22 @@ const FormContent = () => {
   const [password, setPassword] = useState("");
 
   const submitHandler = async (e) => {
-    e.preventDefault();
-    console.log(email, password);
-
     if (email && password) {
+      e.preventDefault();
       dispatch(userLogin({ email: email, password: password }));
-    } else {
-      toast.error("Please enter details");
     }
   };
 
   function onChange(value) {
     console.log("Captcha value:", value);
   }
-  useEffect(() => {
-    if (userToken) navigate("/");
-  }, [userToken]);
+
+  // useEffect(() => {
+  //   if (userToken) {
+  //     // navigate("/candidates-dashboard/my-profile");
+  //     window.location.href = "/candidates-dashboard/my-profile";
+  //   }
+  // }, [userToken]);
   return (
     <div className="form-inner">
       <h3>Login to Sentry Spot</h3>
@@ -43,7 +44,7 @@ const FormContent = () => {
         <div className="form-group">
           <label>Email</label>
           <input
-            type="text"
+            type="email"
             name="Email"
             placeholder="Email"
             value={email}
