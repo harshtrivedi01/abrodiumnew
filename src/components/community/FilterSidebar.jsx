@@ -18,7 +18,7 @@ const FilterSidebar = () => {
                 alt="" />
                </div>
 
-                <h4 className="m-3">[Name]</h4>
+                <h4 className="m-3">Ben Dexter</h4>
                 
             </div>
             <div className="filters-outer text-center bg-">
