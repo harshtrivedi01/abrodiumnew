@@ -165,6 +165,9 @@ const HeaderNavContent = () => {
                 <Link to="/candidates-dashboard/my-profile">
                   Candidate profile{" "}
                 </Link>
+                <Link to="/community">
+                Community{" "}
+                </Link>
               </li>
               <li
                 className={

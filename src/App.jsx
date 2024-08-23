@@ -108,6 +108,7 @@ import OrderCompletedPage from "./pages/shop/order-completed";
 // new routes
 import SentryPage from "@/pages/sentry-spot-id/index";
 import { Toaster } from "react-hot-toast";
+import Communitypage from "./pages/community";
 
 function App() {
   useEffect(() => {
@@ -222,6 +223,7 @@ function App() {
 
                 {/* <Route path="about" element={<AboutPage />} /> */}
                 <Route path="sentry-spot" element={<SentryPage />} />
+                <Route path="community" element={<Communitypage />} />
 
                 <Route path="pricing" element={<PricingPage />} />
                 <Route path="faq" element={<FaqPage />} />
