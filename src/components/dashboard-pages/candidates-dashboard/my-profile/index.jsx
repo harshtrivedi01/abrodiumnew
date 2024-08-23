@@ -9,6 +9,7 @@ import ProfileVisalbilty from "./components/my-profile/ProfileVisalbilty";
 import CopyrightFooter from "../../CopyrightFooter";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
+import { Switch } from "@/components/ui/switch";
 
 const index = () => {
   return (
@@ -41,8 +42,17 @@ const index = () => {
             <div className="col-lg-12">
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
+                  <div className="widget-title flex">
                     <h4>My Profile</h4>
+                    <div className="flex items-center space-x-2">
+                      <label htmlFor="visibility" className="font-bold">
+                        Profile and CV Visibility
+                      </label>
+                      <Switch
+                        id="visibility"
+                        className="rounded-xl data-[state=checked]:bg-[#E60278]"
+                      />
+                    </div>
                   </div>
                   <MyProfile />
                 </div>

@@ -193,9 +193,18 @@ function App() {
                   path="candidates-list-v2"
                   element={<CandidateListPage2 />}
                 />
-                {/* <Route path="candidates-list-v3" element={<CandidateListPage3 />} />
-                  <Route path="candidates-list-v4" element={<CandidateListPage4 />} />
-                  <Route path="candidates-list-v5" element={<CandidateListPage5 />} /> */}
+                <Route
+                  path="candidates-list-v3"
+                  element={<CandidateListPage3 />}
+                />
+                <Route
+                  path="candidates-list-v4"
+                  element={<CandidateListPage4 />}
+                />
+                <Route
+                  path="candidates-list-v5"
+                  element={<CandidateListPage5 />}
+                />
 
                 <Route
                   path="candidates-single-v1/:id"

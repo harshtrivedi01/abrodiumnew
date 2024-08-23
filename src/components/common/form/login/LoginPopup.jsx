@@ -1,7 +1,14 @@
+import { useEffect, useRef, useState } from "react";
 import Register from "../register/Register";
 import FormContent from "./FormContent";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const LoginPopup = () => {
+  const { loading, userInfo, userToken, error, success, message } = useSelector(
+    (state) => state.auth
+  );
+
   return (
     <>
       <div className="modal fade" id="loginPopupModal">
@@ -44,7 +51,7 @@ const LoginPopup = () => {
 
             <div className="modal-body">
               {/* <!-- Login modal --> */}
-              <div id="login-modal">
+              <div id="login-modal" className="p-4">
                 {/* <!-- Login Form --> */}
                 <div className="login-form default-form">
                   <Register />
