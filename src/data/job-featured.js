@@ -2,7 +2,7 @@ const jobFeatures = [
   {
     id: 1,
     logo: "/images/resource/company-logo/1-1.png",
-    jobTitle: "Software Engineer (Android), Libraries",
+    jobTitle: "Software Engineer (Android) , Libraries",
     company: "Segment",
     lat: 40.7279707552121,
     long: -74.07152705896405,
@@ -12,7 +12,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -20,7 +20,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://segment.com",
@@ -59,7 +59,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.catalyst.org",
@@ -98,7 +98,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.invisionapp.com",
@@ -133,7 +133,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.upwork.com",
@@ -164,7 +164,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -172,7 +172,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://medium.com",
@@ -211,7 +211,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.figma.com",
@@ -248,7 +248,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://segment.com",
@@ -310,11 +310,11 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.invisionapp.com",
@@ -405,7 +405,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://segment.com",
@@ -434,11 +434,11 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.catalyst.org",
@@ -471,7 +471,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.invisionapp.com",
@@ -504,7 +504,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     link: "https://www.upwork.com",
@@ -566,7 +566,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -602,7 +602,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     tag: "design",
@@ -696,7 +696,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -704,7 +704,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -742,7 +742,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -780,7 +780,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -818,7 +818,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -848,7 +848,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -856,7 +856,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -894,7 +894,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -931,7 +931,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -968,7 +968,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -997,7 +997,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -1005,7 +1005,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -1043,7 +1043,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -1081,7 +1081,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -1119,7 +1119,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],
@@ -1149,7 +1149,7 @@ const jobFeatures = [
     jobType: [
       {
         styleClass: "time",
-        type: "Full Time",
+        type: "🕤 Full Time",
       },
       {
         styleClass: "privacy",
@@ -1157,7 +1157,7 @@ const jobFeatures = [
       },
       {
         styleClass: "required",
-        type: "Urgent",
+        type: "⌛ Urgent",
       },
     ],
     jobTag: ["App", "Design", "Digital"],

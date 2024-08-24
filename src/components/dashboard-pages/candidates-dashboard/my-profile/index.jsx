@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import MobileMenu from "../../../header/MobileMenu";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
@@ -11,106 +12,84 @@ import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader
 import MenuToggler from "../../MenuToggler";
 import { Switch } from "@/components/ui/switch";
 
-const index = () => {
+const Index = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const steps = [
+    { id: 1, title: "My Profile", component: <MyProfile /> },
+    { id: 2, title: "Social Network", component: <SocialNetworkBox /> },
+    { id: 3, title: "Profile Visibility", component: <ProfileVisalbilty /> },
+    { id: 4, title: "Contact Information", component: <ContactInfoBox /> },
+  ];
+
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
-      {/* <!-- Header Span for hight --> */}
 
       <LoginPopup />
-      {/* End Login Popup Modal */}
-
       <DashboardCandidatesHeader />
-      {/* End Header */}
-
       <MobileMenu />
-      {/* End MobileMenu */}
-
       <DashboardCandidatesSidebar />
-      {/* <!-- End Candidates Sidebar Menu --> */}
 
-      {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
           <BreadCrumb title="My Profile!" />
-          {/* breadCrumb */}
-
           <MenuToggler />
-          {/* Collapsible sidebar button */}
 
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title flex">
-                    <h4>My Profile</h4>
-                    <div className="flex items-center space-x-2">
-                      <label htmlFor="visibility" className="font-bold">
-                        Profile and CV Visibility
-                      </label>
-                      <Switch
-                        id="visibility"
-                        className="rounded-xl data-[state=checked]:bg-[#E60278]"
-                      />
-                    </div>
-                  </div>
-                  <MyProfile />
+          {/* Top Progress Bar */}
+          <div className="w-full bg-blue-100 rounded-t-lg " style={{backgroundColor:"#F4F6FB"}}>
+            <div className="flex justify-around ">
+              {steps.map((step, index) => (
+                <div
+                  key={step.id}
+                  onClick={() => setCurrentStep(step.id)}
+                  className={`relative cursor-pointer py-2 w-full mx-2 text-center font-medium transition-colors duration-300 ${
+                    currentStep === step.id
+                      ? "text-blue-900 border border rounded-3xl bg-white"
+                      : " hover:bg-blue-300 hover:text-blue-800 bg-blue-800 text-white  rounded-3xl"
+                  }`}
+                >
+                  {step.title}
+                  {index < steps.length - 1 && (
+                    <span
+                      className={`absolute top-0 -right-5 h-3 mt-3 w-[24px] bg-blue-800  ${
+                        currentStep === step.id ? "bg-white" : ""
+                      }`}
+                    />
+                  )}
                 </div>
-              </div>
-              {/* <!-- Ls widget --> */}
-
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Social Network</h4>
-                  </div>
-                  {/* End widget-title */}
-
-                  <div className="widget-content">
-                    <SocialNetworkBox />
-                  </div>
-                </div>
-              </div>
-              {/* profile visalibilty select option */}
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Be found by empolyers</h4>
-                  </div>
-                  {/* End widget-title */}
-                  <div className="widget-content">
-                    <ProfileVisalbilty />
-                  </div>
-                </div>
-              </div>
-
-              {/* <!-- Ls widget --> */}
-
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Contact Information</h4>
-                  </div>
-                  {/* End widget-title */}
-                  <div className="widget-content">
-                    <ContactInfoBox />
-                  </div>
-                </div>
-              </div>
-              {/* <!-- Ls widget --> */}
+              ))}
             </div>
           </div>
-          {/* End .row */}
+
+          {/* Main Content */}
+          <div className="p-6">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="flex justify-between items-center mb-4">
+                <h4 className="text-xl font-bold">
+                  {steps[currentStep - 1].title}
+                </h4>
+                {currentStep === 1 && (
+                  <div className="flex items-center space-x-2">
+                    <label htmlFor="visibility" className="font-bold">
+                      Profile and CV Visibility
+                    </label>
+                    <Switch
+                      id="visibility"
+                      className="rounded-xl data-[state=checked]:bg-[#1502e6]"
+                    />
+                  </div>
+                )}
+              </div>
+              {steps[currentStep - 1].component}
+            </div>
+          </div>
         </div>
-        {/* End dashboard-outer */}
       </section>
-      {/* <!-- End Dashboard --> */}
 
       <CopyrightFooter />
-      {/* <!-- End Copyright --> */}
     </div>
-    // End page-wrapper
   );
 };
 
-export default index;
+export default Index;
