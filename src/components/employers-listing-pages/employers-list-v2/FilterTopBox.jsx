@@ -71,41 +71,38 @@ const FilterTopBox = () => {
     ?.sort(sortFilter)
     ?.map((company) => (
       <div
-        className="company-block-four col-xl-4 col-lg-6 col-md-6 col-sm-12"
+        className="company-block-four col-xl-12 col-lg-6 col-md-6 col-sm-12 "
         key={company.id}
       >
-        <div className="inner-box">
+        <div className="inner-box text-start ms-3 bg-blue-500">
           <button className="bookmark-btn">
             <span className="flaticon-bookmark"></span>
           </button>
 
           <div className="content-inner">
-            <span className="featured">Featured</span>
-            <span className="company-logo">
-              <img
-               
-                src={company.img}
-                alt="company brand"
-              />
-            </span>
-            <h4>
+            
+            <span className=" flex">
+              <img  src={company.img}  alt="company brand" className="border-2 p-2 w-16 bg-black rounded-2xl absolute -left-7" />
+               <h4 className="ms-5 pt-2">
               <Link to={`/employers-single-v3/${company.id}`}>
                 {company.name}
               </Link>
             </h4>
-            <ul className="job-info flex-column">
-              <li className="me-0">
-                <span className="icon flaticon-map-locator"></span>
+            </span>
+           
+            <ul className="ms-10 flex text-start">
+              <li className="me-4">
+                <span className="icon flaticon-map-locator"> </span>
                 {company.location}
               </li>
-              <li className="me-0">
-                <span className="icon flaticon-briefcase"></span>
+              <li className="me-2">
+                <span className="icon flaticon-briefcase"> </span>
                 {company.jobType}
               </li>
             </ul>
           </div>
 
-          <div className="job-type me-0">Open Jobs – {company.jobNumber}</div>
+          <div className="job-type me-0 flex justify-start ms-5 mt-3">Open Jobs – {company.jobNumber}</div>
         </div>
       </div>
     ));

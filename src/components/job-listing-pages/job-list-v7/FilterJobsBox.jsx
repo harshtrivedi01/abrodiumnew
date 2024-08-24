@@ -5,6 +5,7 @@
 import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import jobs from "../../../data/job-featured";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCategory,
@@ -120,34 +121,51 @@ const FilterJobsBox = () => {
     ?.filter(tagFilter)
     ?.sort(sortFilter)
     ?.map((item) => (
-      <div className="job-block-four col-lg-6 col-md-6 col-sm-12" key={item.id}>
-        <div className="inner-box">
-          <ul className="job-other-info">
+      <div className="job-block-four col-lg-12  col-md-6 col-sm-12  " key={item.id}>
+        
+        <div className="inner-box text-start ps-5 p-0">
+       
+          {/*<ul className="job-other-info ">
             {item?.jobType?.map((val, i) => (
               <li key={i} className={`${val.styleClass}`}>
                 {val.type}
               </li>
             ))}
-          </ul>
-          <span className="company-logo">
-            <img src={item.logo} alt="featured job" />
-          </span>
-          <span className="company-name">{item.company}</span>
-          <h4>
+          </ul> */}
+          <span className="flex align-middle ">
+          <img src={item.logo} alt="featured job" className="absolute -left-10 top-7 rounded-xl border-2 p-1 h-20 bg-black" />
+            <h4 className="pt-8 ps-2 flex justify-between w-full">
             <Link to={`/job-single-v3/${item.id}`}>{item.jobTitle}</Link>
+            <div className=" absolute right-0">
+              
+              <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2"><i className="fas fa-save text-blue-500"></i></button>
+              <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2"> <i className="fas fa-heart text-blue-500"></i> </button>
+            </div>
           </h4>
-          <div className="location">
-            <span className="icon flaticon-map-locator"></span>
+          </span>
+          
+         
+          <div className="location ">
+            <span className="icon flaticon-map-locator "></span>
             {item.location}
+            <span>
+            {item?.jobType?.map((val, i) => (
+              <li key={i} className="location">
+                {val.type}
+              </li>
+            ))}
+            </span>
           </div>
-          <ul className="post-tags">
+          <div className="flex ">
+          <ul className="post-tags text-start">
             {item?.jobTag?.map((val, i) => (
-              <li key={i}>
+              <li key={i} className="border">
                 <a href="#">{val}</a>
               </li>
             ))}
-            <li className="colored">+2</li>
+           
           </ul>
+          </div>
         </div>
       </div>
       // End all jobs
@@ -281,7 +299,7 @@ const FilterJobsBox = () => {
       </div>
       {/* End top filter bar box */}
 
-      <div className="row">{content}</div>
+      <div className="row m-3">{content}</div>
       {/* End .row */}
 
       <Pagination />

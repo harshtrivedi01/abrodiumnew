@@ -33,7 +33,7 @@ const initialState = {
         },
         {
             id: 2,
-            name: "Full Time",
+            name: " Full Time",
             value: "full-time",
             isChecked: false,
         },
