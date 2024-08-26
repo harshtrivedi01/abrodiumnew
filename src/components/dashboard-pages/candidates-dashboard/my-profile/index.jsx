@@ -11,22 +11,25 @@ import CopyrightFooter from "../../CopyrightFooter";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
 import { Switch } from "@/components/ui/switch";
+import Certificate from "./components/Certificate";
+import Skills from "./components/Skills";
+import Additionalinformation from "./components/Additionalinformation";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
     { id: 1, title: "Personal Details", component: <MyProfile onNext={() => setCurrentStep(2)} /> },
-    { id: 2, title: "Education", component: <SocialNetworkBox /> },
-    { id: 3, title: "Professional Details", component: <ProfileVisalbilty /> },
-    { id: 4, title: "Contact Information", component: <ContactInfoBox /> },
-    { id: 5, title: "Certificates", component: <MyProfile onNext={() => setCurrentStep(6)} /> },
-    { id: 6, title: "Skills & Recommendation", component: <SocialNetworkBox /> },
-    { id: 7, title: "Additional Information", component: <ProfileVisalbilty /> },
+    { id: 2, title: "Education", component: <SocialNetworkBox onNext={() => setCurrentStep(3)} /> },
+    { id: 3, title: "Professional Details", component: <ProfileVisalbilty onNext={() => setCurrentStep(4)} /> },
+    { id: 4, title: "Resume", component: <ContactInfoBox onNext={() => setCurrentStep(5)} /> },
+    { id: 5, title: "Certificates", component: <Certificate onNext={() => setCurrentStep(6)} /> },
+    { id: 6, title: "Skills & Recommendation", component: <Skills  onNext={() => setCurrentStep(7)}/> },
+    { id: 7, title: "Additional Information", component: <Additionalinformation /> },
   ];
 
   return (
-    <div className="page-wrapper dashboard">
+    <div className="page-wrapper dashboard ">
       <span className="header-span"></span>
 
       <LoginPopup />
@@ -34,7 +37,7 @@ const Index = () => {
       <MobileMenu />
       <DashboardCandidatesSidebar />
 
-      <section className="user-dashboard">
+      <section className="user-dashboard ">
         <div className="dashboard-outer">
           <BreadCrumb title="My Profile!" />
           <MenuToggler />
@@ -66,11 +69,11 @@ const Index = () => {
           </div>
 
           {/* Main Content */}
-          <div className="p-6 mt-2">
+          <div className="p-6 mt-2 ">
             <h4 className="text-lg ps-3 bg-blue-900 rounded-t-md w-full p-2 text-white">
               {steps[currentStep - 1].title}
             </h4>
-            <div className="bg-white p-6 shadow-lg">
+            <div className="bg-white p-6 shadow-lg border-2 border-blue-900">
               <div className="flex justify-between items-center mb-4">
                 {currentStep === 1 && (
                   <div className="flex items-center space-x-2">

@@ -7,11 +7,11 @@ const ResumeUpload = () => {
   };
   return (
     <>
-      <p className="text-black ">Upload Resume </p>
-      <div className="uploading-outer">
+     
+      <div className="w-full">
         <div className="uploadButton">
           <input
-            className="uploadButton-input"
+            className="put"
             type="file"
             name="attachments[]"
             accept="pdf/*"
@@ -19,15 +19,12 @@ const ResumeUpload = () => {
             required
             onChange={ResumeHander}
           />
-          <label className="uploadButton-button ripple-effect" htmlFor="upload">
-            {Resume !== "" ? Resume.name : "upload resume"}
-          </label>
-          <span className="uploadButton-file-name"></span>
+          
+          
         </div>
-        {/* <div className="text">
-          Max file size is 1MB, Minimum dimension: 330x300 And Suitable files
-          are .jpg & .png
-        </div> */}
+        <div className="text-xs mt-2">
+        (Accepted format includes PDF)
+        </div> 
       </div>
     </>
   );

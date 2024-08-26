@@ -1,6 +1,13 @@
-const SocialNetworkBox = () => {
+const SocialNetworkBox = ({ onNext }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+
+    // After successful submission, go to the next tab
+    onNext();
+  };
   return (
-    <form className="default-form">
+    <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
@@ -34,7 +41,7 @@ const SocialNetworkBox = () => {
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
           <button type="submit" className="theme-btn btn-style-one bg-blue-950">
-            Save
+          Save & Next ➤
           </button>
         </div>
       </div>
