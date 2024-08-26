@@ -2,6 +2,9 @@
 
 
 import Select from "react-select";
+import { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 const FormInfoBox = () => {
   const catOptions = [
@@ -14,24 +17,83 @@ const FormInfoBox = () => {
     { value: "Digital", label: "Digital" },
     { value: "Creative Art", label: "Creative Art" },
   ];
+  const current = new Date().toISOString().split("T")[0]
+
+  const [logImg, setLogImg] = useState(null);
+  const logImgHander = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setLogImg(URL.createObjectURL(file));
+    }
+  };
 
   return (
     <form action="#" className="default-form">
-      <div className="row">
+      <div className="row ">
+
+      <div className="form-group col-lg-6 col-md-12 flex justify-center">
+       
+      <div>
+      <div className="rounded-full  border w-32 h-32   flex items-center justify-center">
+        <input
+          className="uploadButton-input hidden"
+          type="file"
+          name="attachments[]"
+          accept="image/*"
+          id="upload"
+          required
+          onChange={logImgHander}
+        />
+        <label className="uploadButton-button cursor-pointer flex items-center justify-center" htmlFor="upload">
+          {logImg ? (
+            <img src={logImg} alt="Uploaded" className="w-24 h-24 rounded-full object-cover" />
+          ) : (
+            <div className="flex flex-col items-center">
+              <i className="fas fa-camera text-6xl"></i>
+              
+              
+            </div>
+            
+          )}
+          
+        </label>
+        
+      </div>
+      <div className="bg-blue-800 w-28 mt-2 py-1 ms-2 text-white text-sm text-center rounded-lg">
+        Add Picture
+      </div>
+      </div>
+     
+    </div>
+
         {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-6 col-md-12 ">
           <label>Full Name</label>
-          <input type="text" name="name" placeholder="Jerome" required />
+          <input type="text" name="name" placeholder="Jerome" required
+          className="border rounded-none" />
         </div>
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Job Title</label>
-          <input type="text" name="name" placeholder="UI Designer" required />
+          <label>Gender</label>
+          <input type="text" name="name" placeholder="Gender" required />
+        </div>
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Industry </label>
+          <Select
+            defaultValue={[catOptions[1]]}
+            isMulti
+            name="colors"
+            options={catOptions}
+            className="basic-multi-select"
+            classNamePrefix="select"
+            required
+          />
         </div>
 
         {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-6 col-md-12 ">
           <label>Phone</label>
           <input
             type="text"
@@ -41,9 +103,29 @@ const FormInfoBox = () => {
           />
         </div>
 
+        <div className="form-group col-lg-6 col-md-12 ">
+          <label className="text-start">Date of birth</label><br/>
+          <input type='date'
+      placeholder='Enter BirthDate'
+    className="border text-2xl px-40 py-2.5 rounded-lg bg-slate-200 text-center"
+      name='birthdate'
+      max={current}
+      required
+    />
+        </div>
+       
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Location</label>
+          <input type="text" name="name" placeholder="Location" required />
+        </div>
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Prefered Location</label>
+          <input type="text" name="name" placeholder="Location" required />
+        </div>
+
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Email address</label>
+          <label>Functional Area</label>
           <input
             type="text"
             name="name"
@@ -54,7 +136,7 @@ const FormInfoBox = () => {
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Website</label>
+          <label>Notice Period</label>
           <input
             type="text"
             name="name"
@@ -65,7 +147,7 @@ const FormInfoBox = () => {
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-3 col-md-12">
-          <label>Current Salary($)</label>
+          <label>Annual Salary(INR)</label>
           <select className="chosen-single form-select" required>
             <option>40-70 K</option>
             <option>50-80 K</option>
@@ -77,7 +159,7 @@ const FormInfoBox = () => {
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-3 col-md-12">
-          <label>Expected Salary($)</label>
+          <label>Expected Salary(INR)</label>
           <select className="chosen-single form-select" required>
             <option>120-350 K</option>
             <option>40-70 K</option>
@@ -94,8 +176,7 @@ const FormInfoBox = () => {
           <input type="text" name="name" placeholder="5-10 Years" required />
         </div>
 
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
+        {/* <div className="form-group col-lg-6 col-md-12">
           <label>Age</label>
           <select className="chosen-single form-select" required>
             <option>23 - 27 Years</option>
@@ -103,15 +184,15 @@ const FormInfoBox = () => {
             <option>25 - 29 Years</option>
             <option>26 - 30 Years</option>
           </select>
-        </div>
+        </div>*/}
+        
 
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
+        {/* <div className="form-group col-lg-6 col-md-12">
           <label>Education Levels</label>
           <input type="text" name="name" placeholder="Certificate" required />
         </div>
 
-        {/* <!-- Input --> */}
+ 
         <div className="form-group col-lg-6 col-md-12">
           <label>Languages</label>
           <input
@@ -121,39 +202,29 @@ const FormInfoBox = () => {
             required
           />
         </div>
-
-        {/* <!-- Search Select --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Categories </label>
-          <Select
-            defaultValue={[catOptions[1]]}
-            isMulti
-            name="colors"
-            options={catOptions}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            required
-          />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
+        
+         <div className="form-group col-lg-6 col-md-12">
           <label>Allow In Search & Listing</label>
           <select className="chosen-single form-select" required>
             <option>Yes</option>
             <option>No</option>
           </select>
         </div>
+        */}
+        
+
+        {/* <!-- Search Select --> */}
+        
+
+        {/* <!-- Input --> */}
+       
 
         {/* <!-- About Company --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <label>Description</label>
-          <textarea placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugo's on Wall Street. Managed a small team buying and selling Pogo sticks for farmers. Spent several years licensing licorice in West Palm Beach, FL. Developed several new methods for working it banjos in the aftermarket. Spent a weekend importing banjos in West Palm Beach, FL.In this position, the Software Engineer collaborates with Evention's Development team to continuously enhance our current software solutions as well as create new solutions to eliminate the back-office operations and management challenges present"></textarea>
-        </div>
+       
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
-          <button type="submit" className="theme-btn btn-style-one">
+          <button type="submit" className="theme-btn btn-style-one bg-blue-900">
             Save
           </button>
         </div>
