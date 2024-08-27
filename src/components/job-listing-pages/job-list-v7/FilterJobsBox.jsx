@@ -1,7 +1,3 @@
-
-
-
-
 import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import jobs from "../../../data/job-featured";
@@ -25,9 +21,13 @@ import {
   clearExperienceToggle,
   clearJobTypeToggle,
 } from "../../../features/job/jobSlice";
-
-
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Constant } from "@/utils/constant/constant";
+import { useParams } from "react-router-dom";
 const FilterJobsBox = () => {
+  const token = localStorage.getItem(Constant.USER_TOKEN);
+
   const { jobList, jobSort } = useSelector((state) => state.filter);
   const {
     keyword,
@@ -108,63 +108,89 @@ const FilterJobsBox = () => {
   const sortFilter = (a, b) =>
     sort === "des" ? a.id > b.id && -1 : a.id < b.id && -1;
 
-  let content = jobs
-    ?.slice(perPage.start === 0 ? 20 : 0, perPage.end !== 0 ? perPage.end : 28)
-    ?.filter(keywordFilter)
-    ?.filter(locationFilter)
-    ?.filter(destinationFilter)
-    ?.filter(categoryFilter)
-    ?.filter(jobTypeFilter)
-    ?.filter(datePostedFilter)
-    ?.filter(experienceFilter)
-    ?.filter(salaryFilter)
-    ?.filter(tagFilter)
+  const [Jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    // Construct query parameters based on selected filters
+    const queryParams = new URLSearchParams();
+
+    if (jobType?.length) queryParams.append("job_type_id", jobType.join(","));
+    if (salary?.min || salary?.max) {
+      queryParams.append("offered_salary", `${salary.max}`);
+    }
+    if (experience) queryParams.append("experience", experience);
+    if (location) queryParams.append("city_id", location);
+    if (category) queryParams.append("category_id", category);
+    // Add other filters similarly
+
+    axios
+      .get(
+        `https://api.sentryspot.co.uk/api/jobseeker/job-list?${queryParams.toString()}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.data.status === "success") {
+          setJobs(response.data.data);
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the job list!", error);
+      });
+  }, [
+    jobType,
+    salary,
+    experience,
+    location,
+    category /* Add other filters here */,
+  ]);
+
+  // Your existing content logic
+  let content = Jobs
     ?.sort(sortFilter)
     ?.map((item) => (
-      <div className="job-block-four col-lg-12  col-md-6 col-sm-12  " key={item.id}>
-        
+      <div
+        className="job-block-four col-lg-12 col-md-6 col-sm-12"
+        key={item.id}
+      >
         <div className="inner-box text-start ps-5 p-0">
-       
-          {/*<ul className="job-other-info ">
-            {item?.jobType?.map((val, i) => (
-              <li key={i} className={`${val.styleClass}`}>
-                {val.type}
-              </li>
-            ))}
-          </ul> */}
-          <span className="flex align-middle ">
-          <img src={item.logo} alt="featured job" className="absolute -left-10 top-7 rounded-xl border-2 p-1 h-20 bg-black" />
+          <span className="flex align-middle">
+            <img
+              src={item.logo || "https://img.freepik.com/premium-photo/intelligent-logo-simple_553012-47516.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1717372800&semt=ais_user"}
+              alt="featured job"
+              className="absolute -left-10 top-7 rounded-xl border-2 p-1 h-20 bg-black"
+            />
             <h4 className="pt-8 ps-2 flex justify-between w-full">
-            <Link to={`/job-single-v3/${item.id}`}>{item.jobTitle}</Link>
-            <div className=" absolute right-0">
-              
-              <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2"><i className="fas fa-save text-blue-500"></i></button>
-              <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2"> <i className="fas fa-heart text-blue-500"></i> </button>
-            </div>
-          </h4>
+              {console.log(item.job_title, "data")}
+              <Link to={`/job-single-v3/${item.id}`}>{item.job_title}</Link>
+              <div className="absolute right-0">
+                <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
+                  <i className="fas fa-save text-blue-500"></i>
+                </button>
+                <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
+                  <i className="fas fa-heart text-blue-500"></i>
+                </button>
+              </div>
+            </h4>
           </span>
-          
-         
-          <div className="location ">
-            <span className="icon flaticon-map-locator "></span>
-            {item.location}
-            <span>
-            {item?.jobType?.map((val, i) => (
-              <li key={i} className="location">
-                {val.type}
-              </li>
-            ))}
-            </span>
+
+          <div className="location">
+            <span className="icon flaticon-map-locator"></span>
+            {item.complete_address}
           </div>
-          <div className="flex ">
-          <ul className="post-tags text-start">
-            {item?.jobTag?.map((val, i) => (
-              <li key={i} className="border">
-                <a href="#">{val}</a>
+
+          <div className="flex">
+            <ul className="post-tags text-start">
+              <li className="border">
+                <a href="#">Specialisms: {item.specialisms}</a>
               </li>
-            ))}
-           
-          </ul>
+              <li className="border">
+                <a href="#">Qualification: {item.qualification}</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

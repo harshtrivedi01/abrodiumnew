@@ -1,25 +1,63 @@
 import { useState, useEffect } from "react";
 import { Constant } from "@/utils/constant/constant";
-
+import axios from "axios";
 
 const SocialNetworkBox = ({ onNext }) => {
 
   const token = localStorage.getItem(Constant.USER_TOKEN);
   const baseurl ="https://api.sentryspot.co.uk/api/jobseeker/";
 
-  
-  const [Salarytype, setSalarytype] = useState([]);
-  const [selectSalarytype, setselectSalarytype] = useState("");
+
+  const [coursetype, setcoursetype] = useState([]);
+  const [selectcoursetype, setselectcoursetype] = useState("");
 
   useEffect(() => {
     axios
-      .get(`${baseurl}salary-range`, {
+      .get(`${baseurl}course-types`, {
         headers: {
           Authorization: token,
         },
       })
       .then((response) => {
-        setSalarytype(response.data.data);
+        setcoursetype(response.data.data);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  }, []);
+
+
+  const [Degreetype, setDegreetype] = useState([]);
+  const [selectDegreetype, setselectDegreetype] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${baseurl}degree`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setDegreetype(response.data.data);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  }, []);
+
+
+  const [Batchtype, setBatchtype] = useState([]);
+  const [selectBatchtype, setselectBatchtype] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${baseurl}years`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setBatchtype(response.data.data);
       })
       .catch((error) => {
         toast.error(error);
@@ -49,19 +87,49 @@ const SocialNetworkBox = ({ onNext }) => {
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
           <label>Batch</label>
-          <input type="text" name="name" placeholder="" required />
+          <select
+          id="Batch"
+          value={selectBatchtype}
+          onChange={(e)=> setselectBatchtype(e.target.value)}>
+            <option value="">select a Batch</option>
+            {Batchtype.map((type)=>(
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
           <label>Course Type</label>
-          <input type="text" name="name" placeholder="" required />
+          <select
+          id="course"
+          value={selectcoursetype}
+          onChange={(e)=> setselectcoursetype(e.target.value)}>
+            <option value="">select a course</option>
+            {coursetype.map((type)=>(
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
           <label>Degree</label>
-          <input type="text" name="name" placeholder="" required />
+          <select
+          id="Degree"
+          value={selectDegreetype}
+          onChange={(e)=> setselectDegreetype(e.target.value)}>
+            <option value="">select a Degree</option>
+            {Degreetype.map((type)=>(
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* <!-- Input --> */}
