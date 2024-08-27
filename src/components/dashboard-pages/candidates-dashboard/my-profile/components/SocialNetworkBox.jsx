@@ -1,9 +1,35 @@
+import { useState, useEffect } from "react";
+import { Constant } from "@/utils/constant/constant";
+
+
 const SocialNetworkBox = ({ onNext }) => {
+
+  const token = localStorage.getItem(Constant.USER_TOKEN);
+  const baseurl ="https://api.sentryspot.co.uk/api/jobseeker/";
+
+  
+  const [Salarytype, setSalarytype] = useState([]);
+  const [selectSalarytype, setselectSalarytype] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${baseurl}salary-range`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setSalarytype(response.data.data);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  }, []);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-
-    // After successful submission, go to the next tab
+ 
     onNext();
   };
   return (
