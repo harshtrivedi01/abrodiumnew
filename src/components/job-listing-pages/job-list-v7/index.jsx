@@ -44,16 +44,16 @@ const index = () => {
                 <FilterSidebar />
               </div>
             </div>
-            {/* End filter column for tablet and mobile devices */}
-
-            <div className="filters-column hidden-1023 col-lg-3 col-md-12 col-sm-12">
+            {/*   <div className="filters-column hidden-1023 col-lg-3 col-md-12 col-sm-12">
               <FilterSidebar />
-            </div>
+            </div> */}
+
+          
             {/* <!-- End Filters Column --> */}
 
-            <div className="content-column col-lg-8 ms-5 col-md-12 col-sm-12">
-              <div className="ls-outer">
-              <div className="tabs-navigation flex space-x-4 border-b border-gray-300 mb-4">
+            <div className="content-column ">
+              <div className="">
+              <div className="tabs-navigation flex space-x-4 border-b border-gray-300 mb-4 ms-80">
                   <button
                     className={`tab-button py-2 px-4 ${
                       activeTab === "tab1"
@@ -89,7 +89,7 @@ const index = () => {
                 {/* Tabs Content */}
                 <div className="tabs-content">
                   {activeTab === "tab1" && (
-                    <div className="p-4  border-gray-300 rounded-lg">
+                    <div className="  border-gray-300 rounded-lg">
                        <FilterJobsBox />
                     </div>
                   )}

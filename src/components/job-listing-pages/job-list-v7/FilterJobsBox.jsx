@@ -25,313 +25,446 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Constant } from "@/utils/constant/constant";
 import { useParams } from "react-router-dom";
+
 const FilterJobsBox = () => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [jobCount, setJobCount] = useState(0);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
   const token = localStorage.getItem(Constant.USER_TOKEN);
 
-  const { jobList, jobSort } = useSelector((state) => state.filter);
-  const {
-    keyword,
-    location,
-    destination,
-    category,
-    jobType,
-    datePosted,
-    experience,
-    salary,
-    tag,
-  } = jobList || {};
 
-  const { sort, perPage } = jobSort;
 
-  const dispatch = useDispatch();
+  const [filters, setFilters] = useState({
+    job_type_id: null,
+    offered_salary_id: null,
+    career_level_id: null,
+    experience_id: null,
+    gender_id: null,
+    industry_id: null,
+    qualification_id: null,
+    country_id: null,
+    city_id: null,
+  });
 
-  // keyword filter on title
-  const keywordFilter = (item) =>
-    keyword !== ""
-      ? item.jobTitle.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
-      : item;
+  const citylist = [
+    { id: 1, name: 'Full-Time' },
+    { id: 2, name: 'Part-Time' },
+    // Add other job types
+  ];
 
-  // location filter
-  const locationFilter = (item) =>
-    location !== ""
-      ? item?.location
-          ?.toLocaleLowerCase()
-          .includes(location?.toLocaleLowerCase())
-      : item;
+  const countrylist = [
+    { id: 1, name: 'Full-Time' },
+    { id: 2, name: 'Part-Time' },
+    // Add other job types
+  ];
+  const qualificationlist = [
+    { id: 1, name: 'UG' },
+    { id: 2, name: 'PG' },
+    // Add other job types
+  ];
+  const industrylist = [
+    { id: 1, name: 'IT' },
+    { id: 2, name: 'Accounts' },
+    // Add other job types
+  ];
+  const genderlist = [
+    { id: 1, name: 'Male' },
+    { id: 2, name: 'Female' },
+    // Add other job types
+  ];
 
-  // location filter
-  const destinationFilter = (item) =>
-    item?.destination?.min >= destination?.min &&
-    item?.destination?.max <= destination?.max;
+  const experiencelist = [
+    { id: 1, name: 'Internship' },
+    { id: 2, name: 'Entry-Level' },
+    { id: 3, name: 'Associate' },
+    { id: 4, name: 'Mid-Senior Level' },
+    { id: 5, name: 'Director' },
+    { id: 6, name: 'Executive' },
+    // Add other job types
+  ];
 
-  // category filter
-  const categoryFilter = (item) =>
-    category !== ""
-      ? item?.category?.toLocaleLowerCase() === category?.toLocaleLowerCase()
-      : item;
+  const careerlist = [
+    { id: 1, name: 'Back-end Developer' },
+    { id: 2, name: 'Front-end Developer' },
+    // Add other job types
+  ];
 
-  // job-type filter
-  const jobTypeFilter = (item) =>
-    jobType?.length !== 0 && item?.jobType !== undefined
-      ? jobType?.includes(
-          item?.jobType[0]?.type.toLocaleLowerCase().split(" ").join("-")
-        )
-      : item;
+  const jobTypeList = [
+    { id: 1, name: 'Full-Time' },
+    { id: 2, name: 'Part-Time' },
+    // Add other job types
+  ];
 
-  // date-posted filter
-  const datePostedFilter = (item) =>
-    datePosted !== "all" && datePosted !== ""
-      ? item?.created_at
-          ?.toLocaleLowerCase()
-          .split(" ")
-          .join("-")
-          .includes(datePosted)
-      : item;
+  const salarytype = [
+    { id: 1, name: '0-100k' },
+    { id: 2, name: '100k-200k' },
+    { id: 3, name: '200k-300k' },
+    // Add other job types
+  ];
 
-  // experience level filter
-  const experienceFilter = (item) =>
-    experience?.length !== 0
-      ? experience?.includes(
-          item?.experience?.split(" ").join("-").toLocaleLowerCase()
-        )
-      : item;
-
-  // salary filter
-  const salaryFilter = (item) =>
-    item?.totalSalary?.min >= salary?.min &&
-    item?.totalSalary?.max <= salary?.max;
-
-  // tag filter
-  const tagFilter = (item) => (tag !== "" ? item?.tag === tag : item);
-
-  // sort filter
-  const sortFilter = (a, b) =>
-    sort === "des" ? a.id > b.id && -1 : a.id < b.id && -1;
-
-  const [Jobs, setJobs] = useState([]);
+  const handleToggle = (filterCategory, id) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterCategory]: prevFilters[filterCategory] === id ? null : id,
+    }));
+  };
 
   useEffect(() => {
-    // Construct query parameters based on selected filters
-    const queryParams = new URLSearchParams();
+    // Fetch the list of countries
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get('https://api.sentryspot.co.uk/api/jobseeker/countries');
+        setCountries(response.data.data);
+      } catch (error) {
+        console.error('Failed to fetch countries', error);
+      }
+    };
 
-    if (jobType?.length) queryParams.append("job_type_id", jobType.join(","));
-    if (salary?.min || salary?.max) {
-      queryParams.append("offered_salary", `${salary.max}`);
+    fetchCountries();
+  }, []);
+
+  useEffect(() => {
+    // Fetch the list of states when a country is selected
+    if (filters.country_id) {
+      const fetchStates = async () => {
+        try {
+          const response = await axios.get(`https://api.sentryspot.co.uk/api/jobseeker/stats/${filters.country_id}`);
+          setStates(response.data.data);
+        } catch (error) {
+          console.error('Failed to fetch states', error);
+        }
+      };
+
+      fetchStates();
+    } else {
+      setStates([]); // Clear states if no country is selected
     }
-    if (experience) queryParams.append("experience", experience);
-    if (location) queryParams.append("city_id", location);
-    if (category) queryParams.append("category_id", category);
-    // Add other filters similarly
+  }, [filters.country_id]);
 
-    axios
-      .get(
-        `https://api.sentryspot.co.uk/api/jobseeker/job-list?${queryParams.toString()}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data.status === "success") {
-          setJobs(response.data.data);
-        }
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the job list!", error);
-      });
-  }, [
-    jobType,
-    salary,
-    experience,
-    location,
-    category /* Add other filters here */,
-  ]);
 
-  // Your existing content logic
-  let content = Jobs
-    ?.sort(sortFilter)
-    ?.map((item) => (
-      <div
-        className="job-block-four col-lg-12 col-md-6 col-sm-12"
-        key={item.id}
-      >
-        <div className="inner-box text-start ps-5 p-0">
-          <span className="flex align-middle">
-            <img
-              src={item.logo || "https://img.freepik.com/premium-photo/intelligent-logo-simple_553012-47516.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1717372800&semt=ais_user"}
-              alt="featured job"
-              className="absolute -left-10 top-7 rounded-xl border-2 p-1 h-20 bg-black"
-            />
-            <h4 className="pt-8 ps-2 flex justify-between w-full">
-              {console.log(item.job_title, "data")}
-              <Link to={`/job-single-v3/${item.id}`}>{item.job_title}</Link>
-              <div className="absolute right-0">
-                <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
-                  <i className="fas fa-save text-blue-500"></i>
-                </button>
-                <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
-                  <i className="fas fa-heart text-blue-500"></i>
-                </button>
-              </div>
-            </h4>
-          </span>
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const queryString = Object.keys(filters)
+          .filter((key) => filters[key])
+          .map((key) => `${key}=${filters[key]}`)
+          .join('&');
 
-          <div className="location">
-            <span className="icon flaticon-map-locator"></span>
-            {item.complete_address}
-          </div>
+        const response = await axios.get(
+          `https://api.sentryspot.co.uk/api/jobseeker/job-list?${queryString}`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+       setJobCount(response.data.data.length);
+        setJobs(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Failed to fetch jobs');
+        setLoading(false);
+      }
+    };
 
-          <div className="flex">
-            <ul className="post-tags text-start">
-              <li className="border">
-                <a href="#">Specialisms: {item.specialisms}</a>
-              </li>
-              <li className="border">
-                <a href="#">Qualification: {item.qualification}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      // End all jobs
-    ));
+    fetchJobs();
+  }, [filters]);
 
-  // sort handler
-  const sortHandler = (e) => {
-    dispatch(addSort(e.target.value));
+  if (loading) {
+    return <p>Loading jobs...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
   };
 
-  // per page handler
-  const perPageHandler = (e) => {
-    const pageData = JSON.parse(e.target.value);
-    dispatch(addPerPage(pageData));
-  };
-
-  // clear all filters
-  const clearAll = () => {
-    dispatch(addKeyword(""));
-    dispatch(addLocation(""));
-    dispatch(addDestination({ min: 0, max: 100 }));
-    dispatch(addCategory(""));
-    dispatch(clearJobType());
-    dispatch(clearJobTypeToggle());
-    dispatch(addDatePosted(""));
-    dispatch(clearDatePostToggle());
-    dispatch(clearExperience());
-    dispatch(clearExperienceToggle());
-    dispatch(addSalary({ min: 0, max: 20000 }));
-    dispatch(addTag(""));
-    dispatch(addSort(""));
-    dispatch(addPerPage({ start: 0, end: 0 }));
-  };
+  
   return (
-    <>
-      <div className="ls-switcher">
-        <div className="showing-result">
-          <div className="show-1023">
-            <button
-              type="button"
-              className="theme-btn toggle-filters "
-              data-bs-toggle="offcanvas"
-              data-bs-target="#filter-sidebar"
-            >
-              <span className="icon icon-filter"></span> Filter
-            </button>
-          </div>
-          {/* Collapsible sidebar button */}
+    <div className="p-6  min-h-screen flex">
+      {/* Sidebar */}
+      <aside className="w-72  p-4 rounded-lg shadow-md" style={{backgroundColor:"#F4F7FC"}}>
+        
+       <div className="flex">
+       <h2 className="text-2xl font-semibold text-gray-800 mb-6">Filters</h2>
 
-          <div className="text">
-            Show <strong>{content?.length}</strong> jobs
-          </div>
+
+       </div>
+        {/* Job Type Toggle Switches */}
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Job Type</h3>
+          <ul className="s switchbox">
+            {jobTypeList.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.job_type_id === item.id}
+                    onChange={() => handleToggle('job_type_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
         </div>
-        {/* End showing-result */}
 
-        <div className="sort-by">
-          {keyword !== "" ||
-          location !== "" ||
-          destination?.min !== 0 ||
-          destination?.max !== 100 ||
-          category !== "" ||
-          jobType?.length !== 0 ||
-          datePosted !== "" ||
-          experience?.length !== 0 ||
-          salary?.min !== 0 ||
-          salary?.max !== 20000 ||
-          tag !== "" ||
-          sort !== "" ||
-          perPage.start !== 0 ||
-          perPage.end !== 0 ? (
-            <button
-              onClick={clearAll}
-              className="btn btn-danger text-nowrap me-2"
-              style={{ minHeight: "45px", marginBottom: "15px" }}
-            >
-              Clear All
-            </button>
-          ) : undefined}
+       
 
-          <select
-            value={sort}
-            className="chosen-single form-select"
-            onChange={sortHandler}
-          >
-            <option value="">Sort by (default)</option>
-            <option value="asc">Newest</option>
-            <option value="des">Oldest</option>
-          </select>
-          {/* End select */}
-
-          <select
-            onChange={perPageHandler}
-            className="chosen-single form-select ms-3 "
-            value={JSON.stringify(perPage)}
-          >
-            <option
-              value={JSON.stringify({
-                start: 0,
-                end: 0,
-              })}
-            >
-              All
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 20,
-                end: 26,
-              })}
-            >
-              25 per page
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 25,
-                end: 31,
-              })}
-            >
-              30 per page
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 30,
-                end: 36,
-              })}
-            >
-              35 per page
-            </option>
-          </select>
-          {/* End select */}
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Salary</h3>
+          <ul className=" switchbox">
+            {salarytype.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.offered_salary_id === item.id}
+                    onChange={() => handleToggle('offered_salary_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                   <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <div className="border rounded-lg p-2 bg-white mb-6">
+       <div className="mb-10 mt-2">
+          <label className="text-lg font-medium text-gray-700 mb-2">Country</label>
+          <select
+            name="country_id"
+            value={filters.country_id || ''}
+            onChange={handleFilterChange}
+            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="">Select a Country</option>
+            {countries.map((country) => (
+              <option key={country.id} value={country.id}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* State Dropdown */}
+       
+          <div className="mb-6">
+            <label className="text-lg font-medium text-gray-700 mb-2">State</label>
+            <select
+              name="state_id"
+              value={filters.state_id || ''}
+              onChange={handleFilterChange}
+              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            > {filters.country_id && ( <option value="">Select a State</option> )}
+              <option value="">Select a Country First</option>
+              {states.map((state) => (
+                <option key={state.id} value={state.id}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
+          </div>
+       </div>
+
+
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Career</h3>
+          <ul className="s switchbox">
+            {careerlist.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.career_level_id === item.id}
+                    onChange={() => handleToggle('career_level_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Experience</h3>
+          <ul className="s switchbox">
+            {experiencelist.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.experience_id === item.id}
+                    onChange={() => handleToggle('experience_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Gender</h3>
+          <ul className="s switchbox">
+            {genderlist.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.gender_id === item.id}
+                    onChange={() => handleToggle('gender_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Industry</h3>
+          <ul className="s switchbox">
+            {industrylist.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.industry_id === item.id}
+                    onChange={() => handleToggle('industry_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-2">Qualification</h3>
+          <ul className="s switchbox">
+            {qualificationlist.map((item) => (
+              <li key={item.id}>
+                <label className="flex items-center space-x-2 switch">
+                  <input
+                    type="checkbox"
+                    checked={filters.qualification_id === item.id}
+                    onChange={() => handleToggle('qualification_id', item.id)}
+                    className="form-checkbox h-5 w-5 text-blue-600"
+                  />
+                   <span className="slider round"></span>
+                  <span className="text-gray-700 title">{item.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+       
+
+      
+      
+
+        {/* Add similar blocks for other filters like Offered Salary, Career Level, etc. */}
+        
+        
+      </aside>
+
+      {/* Job List */}
+      <main className="flex-1 pl-6">
+      <div className="flex justify-between px-5 my-3">
+
+      <p className="text-lg  text-gray-800 mb-4">
+        Show {jobCount} {jobCount === 1 ? 'Job' : 'Jobs'} 
+      </p>
+
+      <button
+  type="button"
+  onClick={() => setFilters({
+    job_type_id: null,
+    offered_salary_id: null,
+    career_level_id: null,
+    experience_id: null,
+    gender_id: null,
+    industry_id: null,
+    qualification_id: null,
+    country_id: null,
+    city_id: null,
+  })}
+  className="bg-red-200 text-red-600 rounded-md  px-4 py-2 shadow-md hover:bg-red-600 hover:text-white "
+>
+  Reset Filters
+</button>
       </div>
-      {/* End top filter bar box */}
 
-      <div className="row m-3">{content}</div>
-      {/* End .row */}
-
-      <Pagination />
-      {/* <!-- End Pagination --> */}
-    </>
+        <ul className="px-16">
+          {jobs.map((job) => (
+            <div
+            className="job-block-four col-lg-12 col-md-6 col-sm-12"
+            key={job.id}
+          >
+            <div className="inner-box text-start ps-5 p-0">
+              <span className="flex align-middle">
+                <img
+                  src={job.logo || "https://img.freepik.com/premium-photo/intelligent-logo-simple_553012-47516.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1717372800&semt=ais_user"}
+                  alt="featured job"
+                  className="absolute -left-10 top-7 rounded-xl border-2 p-1 h-20 bg-black"
+                />
+                <h4 className="pt-8 ps-2 flex justify-between w-full">
+                  {console.log(job.job_title, "data")}
+                  <Link to={`/job-single-v3/${job.id}`}>{job.job_title}</Link>
+                  <div className="absolute right-0">
+                    <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
+                      <i className="fas fa-save text-blue-500"></i>
+                    </button>
+                    <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
+                      <i className="fas fa-heart text-blue-500"></i>
+                    </button>
+                  </div>
+                </h4>
+              </span>
+    
+              <div className="location">
+                <span className="icon flaticon-map-locator"></span>
+                {job.complete_address}
+              </div>
+    
+              <div className="flex">
+                <ul className="post-tags text-start">
+                  <li className="border">
+                    <a href="#">Specialisms: {job.specialisms}</a>
+                  </li>
+                  <li className="border">
+                    <a href="#">Qualification: {job.qualification}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          ))}
+        </ul>
+      </main>
+    </div>
   );
 };
+
 
 export default FilterJobsBox;
