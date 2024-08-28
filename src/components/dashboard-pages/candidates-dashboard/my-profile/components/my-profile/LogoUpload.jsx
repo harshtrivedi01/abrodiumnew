@@ -10,7 +10,7 @@ const LogoUpload = () => {
     };
     return (
         <>
-            <div className="uploading-outer">
+            <div className="uploading-outer flex-col text-start">
                 <div className="uploadButton">
                     <input
                         className="uploadButton-input"
@@ -19,20 +19,24 @@ const LogoUpload = () => {
                         accept="image/*"
                         id="upload"
                         required
+                        placeholder=""
                         onChange={logImgHander}
                     />
                     <label
-                        className="uploadButton-button ripple-effect"
+                    
+                        className="uploadButton-button "
                         htmlFor="upload"
                     >
-                        {logImg !== "" ? logImg.name : "Browse Logo"}
-                    </label>
+                        {logImg !== "" ? logImg.name : "Add picture"}
+                    </label><br/> 
+                  
                     <span className="uploadButton-file-name"></span>
                 </div>
                 <div className="text">
-                    Max file size is 1MB, Minimum dimension: 330x300 And
-                    Suitable files are .jpg & .png
+                    Max size is 1MB, Min size: 330x300 
+                    
                 </div>
+         
             </div>
         </>
     );

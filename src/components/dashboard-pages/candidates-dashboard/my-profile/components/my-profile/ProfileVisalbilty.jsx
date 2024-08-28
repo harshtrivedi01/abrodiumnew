@@ -7,56 +7,58 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const ProfileVisalbilty = () => {
-  const options = [
-    {
-      label: "Standard",
-      value: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Commodi, exercitationem tenetur laudantium reiciendis soluta.`,
-      recommended: true,
-    },
-    {
-      label: "Limited",
-      value: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Commodi, exercitationem.`,
-    },
-    {
-      label: "Hidden",
-      value: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Commodi, exercitationem tenetur.`,
-    },
-  ];
-  const [showStatusBar, setShowStatusBar] = useState("Standard");
+const ProfileVisalbilty = ({ onNext }) => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+
+    // After successful submission, go to the next tab
+    onNext();
+  };
 
   return (
-    <DropdownMenu className="max-w-[40%]">
-      <DropdownMenuTrigger asChild className="form-group col-lg-6 col-md-12">
-        <button className="p-3 rounded-lg text-left bg-[#f0f5f7]">
-          {showStatusBar}
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="">
-        {options?.map((option, i) => (
-          <DropdownMenuCheckboxItem
-            checked={showStatusBar === option?.label}
-            onCheckedChange={() => setShowStatusBar(option?.label)}
-            className=" flex flex-col items-start max-w-lg"
-            key={option?.value}
-          >
-            <div className="flex items-center gap-3">
-              <p className="font-bold">{option?.label}</p>
-              {option?.recommended && (
-                <span className="bg-purple-600 rounded-lg px-3 py-1 text-white">
-                  Recommended
-                </span>
-              )}
-            </div>
-            <p className="text-gray-400 text-sm">{option?.value}</p>
-          </DropdownMenuCheckboxItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <form className="default-form" onSubmit={handleSubmit}>
+      <div className="row">
+        {/* <!-- Input --> */}
+        <div className="form-group col-lg-7 col-md-12">
+          <label>Designation</label>
+          <input
+            type="text"
+            name="name"
+            placeholder=""
+            required
+          />
+        </div>
+
+        {/* <!-- Input --> */}
+        <div className="form-group col-lg-7 col-md-12">
+          <label>Organization</label>
+          <input type="text" name="name" placeholder="" required />
+        </div>
+
+        {/* <!-- Input --> */}
+        <div className="form-group col-lg-7 col-md-12">
+          <label>Salary</label>
+          <input type="text" name="name" placeholder="" required />
+        </div>
+
+        {/* <!-- Input --> */}
+        <div className="form-group col-lg-7 col-md-12">
+          <label>Time Period</label>
+          <input type="text" name="name" placeholder="" required />
+        </div>
+
+        {/* <!-- Input --> */}
+        <div className="form-group col-lg-7 col-md-12">
+          <button type="submit" className="theme-btn btn-style-one bg-blue-950">
+          Save & Next ➤
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
+
 
 export default ProfileVisalbilty;
