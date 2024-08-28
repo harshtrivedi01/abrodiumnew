@@ -25,6 +25,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Constant } from "@/utils/constant/constant";
 import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const FilterJobsBox = () => {
   const [jobs, setJobs] = useState([]);
@@ -190,12 +191,34 @@ const FilterJobsBox = () => {
     }));
   };
 
+  const applyjob = async(jobId)=>{
+    try {
+      const response = await axios.post(
+        `https://api.sentryspot.co.uk/api/jobseeker/apply-for-job/${jobId}`,
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert('You have successfully applied for the job!');
+      } else {
+        alert('Failed to apply for the job. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error applying for job:', error);
+      toast.error('An error occurred while applying for the job. Please try again.');
+    }
+  };
   
   return (
     <div className="p-6  min-h-screen flex">
       {/* Sidebar */}
       <aside className="w-72  p-4 rounded-lg shadow-md" style={{backgroundColor:"#F4F7FC"}}>
-        
+        <ToastContainer/>
        <div className="flex">
        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Filters</h2>
 
@@ -432,11 +455,11 @@ const FilterJobsBox = () => {
                   {console.log(job.job_title, "data")}
                   <Link to={`/job-single-v3/${job.id}`}>{job.job_title}</Link>
                   <div className="absolute right-0">
-                    <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
-                      <i className="fas fa-save text-blue-500"></i>
+                    <button className=" p-1 px-2 border-blue-800 rounded-full me-2"   onClick={() => applyjob(job.id)}>
+                      <i className="fas fa-bookmark text-blue-900"></i>
                     </button>
-                    <button className="border-1 p-1 px-2 border-blue-800 rounded-full me-2">
-                      <i className="fas fa-heart text-blue-500"></i>
+                    <button className=" p-1 px-2 border-blue-800 rounded-full me-2">
+                      <i className="fas fa-heart text-blue-900"></i>
                     </button>
                   </div>
                 </h4>
