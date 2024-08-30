@@ -23,9 +23,9 @@ const Index = () => {
     { id: 2, title: "Education", component: <SocialNetworkBox onNext={() => setCurrentStep(3)} /> },
     { id: 3, title: "Professional Details", component: <ProfileVisalbilty onNext={() => setCurrentStep(4)} /> },
     { id: 4, title: "Resume", component: <ContactInfoBox onNext={() => setCurrentStep(5)} /> },
-    { id: 5, title: "Certificates", component: <Certificate onNext={() => setCurrentStep(6)} /> },
-    { id: 6, title: "Skills & Recommendation", component: <Skills  onNext={() => setCurrentStep(7)}/> },
-    { id: 7, title: "Additional Information", component: <Additionalinformation /> },
+   
+    { id: 5, title: "Skills & Recommendation", component: <Skills  onNext={() => setCurrentStep(6)}/> },
+    { id: 6, title: "Additional Information", component: <Additionalinformation /> },
   ];
 
   return (
