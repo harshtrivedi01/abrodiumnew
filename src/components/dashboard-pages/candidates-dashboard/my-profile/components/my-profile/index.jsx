@@ -32,7 +32,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from "axios";
 import Header from "@/components/home-10/Header";
 import { Constant } from "@/utils/constant/constant";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Index = ({ onNext }) => {
   const token = localStorage.getItem(Constant.USER_TOKEN);
@@ -42,20 +42,73 @@ const Index = ({ onNext }) => {
   const current = new Date().toISOString().split("T")[0];
   const [logImg, setLogImg] = useState(null);
 
-  const logImgHander = (event) => {
+  const logImgHander  = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      setLogImg(URL.createObjectURL(file));
+    if (file && file.type.match('image.*')) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setLogImg(reader.result); // Store the Base64 string of the file
+      };
+    } else {
+      toast.error("Please upload a valid image file.");
     }
   };
+  const personal_details ="personal_details"
 
-  const handleSubmit = (e) => {
+  const [phoneNumber,setPhoneNumber]=useState("")
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+  
+    const form = e.target;
+    const formData = {
+      keyword:personal_details,
+      photo: logImg,
+      first_name: form.first_name.value,
+      last_name: form.lastname.value,
+      gender_id: form.gender.value,
+      dob: form.birthdate.value,
+      
+      phone_number: phoneNumber, // Use the state value here
+     
+      current_country_id: form.country.value,
+      current_state_id: form.state.value,
+      current_city_id: form.city.value,
 
-    // After successful submission, go to the next tab
-    onNext();
+      preferred_country_id: form.preferredcountry.value,
+      preferred_state_id: form.preferredstate.value,
+      preferred_city_id: form.preferredcity.value,
+
+      industry_id: form.industries.value,
+      functional_area_id: form.Functional.value,
+      notice_period_id: form.notice_period.value,
+      experience_in_month: form.Experiencetype.value,
+      annual_salary_id: form.Salarytype.value,
+      expected_salary_id: form.expectedSalarytype.value,
+    
+    };
+  
+    try {
+      const response = await axios.put(
+        "https://api.sentryspot.co.uk/api/jobseeker/user-profile",
+        JSON.stringify(formData), // Send as a JSON string
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json", // Set content type to JSON
+          },
+        }
+      );
+      toast.success("Personal Details updated successfully!");
+      onNext();
+    } catch (error) {
+      toast.error("Failed to update profile.");
+      console.error("Error updating profile:", error);
+    }
   };
+  
+  
 
   const [workplaceTypes, setWorkplaceTypes] = useState([]);
   const [selectedWorkplace, setSelectedWorkplace] = useState('');
@@ -125,6 +178,24 @@ const Index = ({ onNext }) => {
       })
       .then((response) => {
         setSalarytype(response.data.data);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  }, []);
+
+  const [expectedSalarytype, expectedsetSalarytype] = useState([]);
+  const [expectedselectSalarytype, expectedsetselectSalarytype] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${baseurl}salary-range`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        expectedsetSalarytype(response.data.data);
       })
       .catch((error) => {
         toast.error(error);
@@ -260,8 +331,84 @@ const Index = ({ onNext }) => {
   };
 
 
+  const [preferredcountries, preferredsetCountries] = useState([]);
+  const [preferredstates, preferredsetStates] = useState([]);
+  const [preferredcities, preferredsetCities] = useState([]);
+
+  const [preferredselectedCountry, preferredsetSelectedCountry] = useState("");
+  const [preferredselectedState, preferredsetSelectedState] = useState("");
+  const [preferredselectedCity, preferredsetSelectedCity] = useState("");
+
+  useEffect(() => {
+    preferredfetchCountries();
+  }, []);
+
+  const preferredfetchCountries = async () => {
+    try {
+      const response = await axios.get(
+        `${baseurl}countries`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      preferredsetCountries(response.data.data);
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    }
+  };
+
+  const preferredfetchStates = async (countryId) => {
+    try {
+      const response = await axios.get(
+        `${baseurl}stats/${countryId}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      preferredsetStates(response.data.data);
+      preferredsetCities([]); // Reset cities when country changes
+    } catch (error) {
+      console.error("Error fetching states:", error);
+    }
+  };
+
+  const preferredfetchCities = async (stateId) => {
+    try {
+      const response = await axios.get(
+        `${baseurl}cities/${stateId}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      preferredsetCities(response.data.data);
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+    }
+  };
+
+  const preferredhandleCountryChange = (e) => {
+    const countryId = e.target.value;
+    preferredsetSelectedCountry(countryId);
+    preferredfetchStates(countryId);
+  };
+
+  const preferredhandleStateChange = (e) => {
+    const stateId = e.target.value;
+    preferredsetSelectedState(stateId);
+    preferredfetchCities(stateId);
+  };
+
+  
+
   return (
     <form onSubmit={handleSubmit} className="default-form">
+      <ToastContainer/>
       <div className="row">
         {/* Profile Picture Upload */}
         <div className="form-group col-lg-6 col-md-12 flex justify-center">
@@ -301,11 +448,19 @@ const Index = ({ onNext }) => {
 
         {/* Form Fields */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Full Name</label>
+          <label>First Name</label>
           <input
             type="text"
-            name="name"
-            placeholder="Jerome"
+            name="first_name"
+            placeholder="eg. Jerome"
+            required
+            className="border rounded-none mb-4"
+          />
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastname"
+            placeholder="eg. doe"
             required
             className="border rounded-none"
           />
@@ -347,27 +502,27 @@ const Index = ({ onNext }) => {
           <div className="form-group col-lg-6 col-md-12">
   <label>Phone Number</label>
   <PhoneInput
-    country={'us'} // Set default country here
-    
-    inputStyle={{
-      width: "100%",
-      borderRadius: "10px",
-      border: "none",
-      height: "calc(2.5em + 1rem + 3px)",
-     
-      fontSize: "1rem",
-      lineHeight: "1.5",
-     
-      backgroundColor: "#F0F5F7",
-      backgroundClip: "padding-box",
-    }}
-    containerStyle={{ width: "100%" }}
-    buttonStyle={{
-      borderRadius: "none",
-      border: "none",
-      backgroundColor: "#f8f9fa",
-    }}
-  />
+  country={'us'} // Set default country here
+  value={phoneNumber}
+  onChange={(value) => setPhoneNumber(value)}
+  inputStyle={{
+    width: "100%",
+    borderRadius: "10px",
+    border: "none",
+    height: "calc(2.5em + 1rem + 3px)",
+    fontSize: "1rem",
+    lineHeight: "1.5",
+    backgroundColor: "#F0F5F7",
+    backgroundClip: "padding-box",
+  }}
+  containerStyle={{ width: "100%" }}
+  buttonStyle={{
+    borderRadius: "none",
+    border: "none",
+    backgroundColor: "#f8f9fa",
+  }}
+/>
+
 </div>
 
 
@@ -375,6 +530,7 @@ const Index = ({ onNext }) => {
           <label>Gender</label>
           <select
           id="Gender"
+          name='gender'
           value={selectGendertype}
           onChange={(e)=> setselectGendertype(e.target.value)}>
             <option value="">select a Gender</option>
@@ -399,8 +555,24 @@ const Index = ({ onNext }) => {
   />
 </div>
 
-
-       <div className="form-group col-lg-6 col-md-12">
+<div className="form-group col-lg-6 col-md-12">
+          <label>Functional Area</label>
+          <select
+          id="Functional"
+          name='Functional'
+          value={selectFunctionaltype}
+          onChange={(e)=> setselectFunctionaltype(e.target.value)}>
+            <option value="">select a Functional Area</option>
+            {Functionaltype.map((type)=>(
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div></div>
+        <label className='my-2 mt-4 text-lg'>(Current - Location)</label>
+       <div className="form-group col-lg-4 col-md-12 ">
           <label>Country</label>
           <select
             name="country"
@@ -418,7 +590,7 @@ const Index = ({ onNext }) => {
         </div>
 
         {/* State Dropdown */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-4 col-md-12">
           <label>State</label>
           <select
             name="state"
@@ -436,7 +608,7 @@ const Index = ({ onNext }) => {
         </div>
 
         {/* City Dropdown */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-4 col-md-12">
           <label>City</label>
           <select
             name="city"
@@ -453,20 +625,95 @@ const Index = ({ onNext }) => {
           </select>
         </div>
 
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Functional Area</label>
+
+        <label className='my-2 mt-4 text-lg'>(Preferred - Location)</label>
+       <div className="form-group col-lg-4 col-md-12 ">
+          <label>Country</label>
           <select
-          id="Functional"
-          value={selectFunctionaltype}
-          onChange={(e)=> setselectFunctionaltype(e.target.value)}>
-            <option value="">select a Functional Area</option>
-            {Functionaltype.map((type)=>(
+            name="preferredcountry"
+            value={preferredselectedCountry}
+            onChange={preferredhandleCountryChange}
+            required
+          >
+            <option value="">Select Country</option>
+            {preferredcountries.map((country) => (
+              <option key={country.id} value={country.id}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* State Dropdown */}
+        <div className="form-group col-lg-4 col-md-12">
+          <label>State</label>
+          <select
+            name="preferredstate"
+            value={preferredselectedState}
+            onChange={preferredhandleStateChange}
+            required
+          >
+            <option value="">Select State</option>
+            {preferredstates.map((state) => (
+              <option key={state.id} value={state.id}>
+                {state.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* City Dropdown */}
+        <div className="form-group col-lg-4 col-md-12">
+          <label>City</label>
+          <select
+            name="preferredcity"
+            value={preferredselectedCity}
+            onChange={(e) => preferredsetSelectedCity(e.target.value)}
+            required
+          >
+            <option value="">Select City</option>
+            {preferredcities.map((city) => (
+              <option key={city.id} value={city.id}>
+                {city.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Salary-Range (INR)</label>
+          <select
+          id="Salarytype"
+          name='Salarytype'
+          value={selectSalarytype}
+          onChange={(e)=> setselectSalarytype(e.target.value)}>
+            <option value="">select a Salary</option>
+            {Salarytype.map((type)=>(
               <option key={type.id} value={type.id}>
                 {type.name}
               </option>
             ))}
           </select>
         </div>
+        
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Expected Salary-Range (INR)</label>
+          <select
+          id="expectedSalarytype"
+          name='expectedSalarytype'
+          value={expectedselectSalarytype}
+          onChange={(e)=> expectedsetselectSalarytype(e.target.value)}>
+            <option value="">select a Salary</option>
+            {expectedSalarytype.map((type)=>(
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
 
         <div className="form-group col-lg-6 col-md-12">
           <label>Notice Period</label>
@@ -478,20 +725,8 @@ const Index = ({ onNext }) => {
           />
         </div>
 
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Salary (INR)</label>
-          <select
-          id="Salarytype"
-          value={selectSalarytype}
-          onChange={(e)=> setselectSalarytype(e.target.value)}>
-            <option value="">select a Salary</option>
-            {Salarytype.map((type)=>(
-              <option key={type.id} value={type.id}>
-                {type.name}
-              </option>
-            ))}
-          </select>
-        </div>
+       
+
 
         
 
@@ -499,6 +734,7 @@ const Index = ({ onNext }) => {
           <label>Experience</label>
           <select
           id="Experiencetype"
+          name='Experiencetype'
           value={selectExperiencetype}
           onChange={(e)=> setselectExperiencetype(e.target.value)}>
             <option value="">select a Experience</option>
@@ -514,6 +750,7 @@ const Index = ({ onNext }) => {
           <label>Industries</label>
           <select
           id="industries"
+          name='industries'
           value={selectindustriestype}
           onChange={(e)=> setselectindustriestype(e.target.value)}>
             <option value="">select a Industries</option>
