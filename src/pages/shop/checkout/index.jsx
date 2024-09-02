@@ -4,8 +4,8 @@ import Checkout from "@/components/shop/checkout";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: "Checkout || sentryspot - Job Borad ReactJs Template",
-  description: "sentryspot - Job Borad ReactJs Template",
+  title: "Checkout || Abroadium- Job Borad ReactJs Template",
+  description: "Abroadium- Job Borad ReactJs Template",
 };
 
 const CheckoutPage = () => {

@@ -5,12 +5,12 @@ const CopyrightFooter = () => {
     <div className="footer-bottom">
       <div className="auto-container">
         <div className="outer-box">
-          <div className="copyright-text">
-            © {new Date().getFullYear()} SentrySpot by{" "}
+          <div className="copyright-text text-white">
+            © {new Date().getFullYear()} Abroadiumby{" "}
             
              All Right Reserved.
           </div>
-          <div className="social-links">
+          <div className="social-links text-white">
             <Social />
           </div>
         </div>

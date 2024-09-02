@@ -56,10 +56,10 @@ const HeaderNavContent = () => {
           </li>
           <li
             className={`${
-              isActiveParent(homeItems, pathname) ? "text-blue-950" : ""
+              isActiveParent(homeItems, pathname) ? "text-white" : ""
             } dropdown`}
           >
-            <span>AI Resume</span>
+            <span className="text-white">AI Resume</span>
             <ul>
               <li
                 className={
@@ -100,7 +100,7 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>Jobs</span>
+            <span className="text-white">Jobs</span>
             <ul>
               <li
                 className={
@@ -129,7 +129,7 @@ const HeaderNavContent = () => {
                 : ""
             } dropdown`}
           >
-            <span>SentrySpot ID</span>
+            <span className="text-white">AbroadiumID</span>
             <ul>
               {/*{employerItems.map((item) => (
                 <li className="dropdown" key={item.id}>
@@ -161,7 +161,7 @@ const HeaderNavContent = () => {
               <li
                 className={pathname?.includes("/sentry-spot") ? "current" : ""}
               >
-                <Link to="/sentry-spot">sentryspot id </Link>
+                <Link to="/sentry-spot">Abroadiumid </Link>
                 <Link to="/candidates-dashboard/my-profile">
                   Candidate profile{" "}
                 </Link>
@@ -269,7 +269,7 @@ const HeaderNavContent = () => {
               isActiveParentChaild(blogItems, pathname) ? "current" : ""
             } dropdown`}
           >
-            <Link to={"https://blog.sentryspot.co.uk/"}> Resources</Link>
+            <Link to={"https://blog.Abroadium.co.uk/"} className="text-white"> Resources</Link>
             {/* <ul>
               {blogItems.map((item, i) => (
                 <li
@@ -288,9 +288,9 @@ const HeaderNavContent = () => {
           {/* reposting btn */}
           <li className="border h-[80%] p-0 m-0 "></li>
           <li className=" hover:bg-slate-200  p-2 rounded-md ml-2">
-            <Link to="/">
+            <Link to="/" className="text-white"> 
               {" "}
-              <span className="font-light"> Recruiting</span>? Post a job{" "}
+              <span className="font-light text-white"> Recruiting</span>? Post a job{" "}
             </Link>
           </li>
 

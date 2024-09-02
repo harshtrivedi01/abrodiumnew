@@ -3,8 +3,8 @@ import LogIn from "@/components/pages-menu/login";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: "Login || sentryspot - Job Borad ReactJs Template",
-  description: "sentryspot - Job Borad ReactJs Template",
+  title: "Login || Abroadium- Job Borad ReactJs Template",
+  description: "Abroadium- Job Borad ReactJs Template",
 };
 
 const LoginPage = () => {

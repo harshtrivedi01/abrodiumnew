@@ -3,8 +3,8 @@ import AppliedJobs from "@/components/dashboard-pages/candidates-dashboard/appli
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: "Applied Jobs || sentryspot - Job Borad ReactJs Template",
-  description: "sentryspot - Job Borad ReactJs Template",
+  title: "Applied Jobs || Abroadium- Job Borad ReactJs Template",
+  description: "Abroadium- Job Borad ReactJs Template",
 };
 
 const AppliedJobsPage = () => {

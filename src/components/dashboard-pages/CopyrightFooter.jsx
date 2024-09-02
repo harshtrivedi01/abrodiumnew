@@ -2,7 +2,7 @@ const CopyrightFooter = () => {
   return (
     <div className="copyright-text">
       <p>
-        © {new Date().getFullYear()} SentrySpot by{" "}
+        © {new Date().getFullYear()} Abroadiumby{" "}
        
         All Right Reserved.
       </p>

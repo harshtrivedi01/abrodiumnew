@@ -18,10 +18,10 @@ const HeroSection = () => {
         <div className="bg-blue-900 rounded-lg p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="w-full md:w-1/2">
             <h2 className="text-white text-2xl md:text-3xl font-semibold">
-              Enhance Your Career Prospects with a SentrySpot ID Profile
+              Enhance Your Career Prospects with a AbroadiumID Profile
             </h2>
             <p className="text-white text-sm md:text-lg mt-4">
-              A SentrySpot Profile provides you with a personalized search experience and more relevant job recommendations – so you can find your next job faster.
+              A AbroadiumProfile provides you with a personalized search experience and more relevant job recommendations – so you can find your next job faster.
             </p>
             <div className="mt-6">
               <a
@@ -144,9 +144,9 @@ const HeroSection = () => {
                   <img src={manage} className="w-24 mx-auto mb-4" alt="Feature 4" />
                   <h2 className="font-semibold text-gray-800 text-lg md:text-xl">Verify and Stand Out</h2>
                   <p className="mt-2 text-gray-600 text-sm md:text-base">
-                    Quickly and securely verify your work-related credentials in your profile and on job applications with SentrySpot Pass.
+                    Quickly and securely verify your work-related credentials in your profile and on job applications with AbroadiumPass.
                   </p>
-                  <a href="#" className="text-blue-500 mt-2 inline-block">Learn about SentrySpot Pass</a>
+                  <a href="#" className="text-blue-500 mt-2 inline-block">Learn about AbroadiumPass</a>
                 </div>
               </div>
             </div>

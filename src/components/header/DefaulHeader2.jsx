@@ -30,7 +30,7 @@ const DefaulHeader2 = () => {
 
   return (
     // <!-- Main Header-->
-    <header
+    <header style={{backgroundColor:"#4C3957"}}
       className={`main-header font-bold border ${
         navbar ? "fixed-header animated slideInDown   " : ""
       }`}
@@ -42,7 +42,7 @@ const DefaulHeader2 = () => {
           <div className="logo-box">
             <div className="me-10">
               <Link to="/">
-                <img alt="brand" src={logo} className="h-20 w-28 " />
+                <img alt="brand" src="https://blog.abroadium.com/wp-content/uploads/2024/03/cropped-Ab-e1709974122683-300x91.png" className="m-3 w-28 " />
               </Link>
             </div>
           </div>
@@ -57,7 +57,7 @@ const DefaulHeader2 = () => {
           {/* <!-- Add Listing --> */}
           <Link
             to="/candidates-dashboard/cv-manager"
-            className="upload-cv text-blue-950"
+            className="upload-cv text-white"
           >
             Upload your CV
           </Link>
@@ -76,7 +76,7 @@ const DefaulHeader2 = () => {
             ) : (
               <a
                 href="#"
-                className="theme-btn btn-style-three call-modal p-2   text-blue-950"
+                className="theme-btn btn-style-three call-modal p-2   text-white"
                 data-bs-toggle="modal"
                 data-bs-target="#loginPopupModal"
               >

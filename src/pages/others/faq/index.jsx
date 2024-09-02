@@ -5,9 +5,9 @@ import Faq from "@/components/pages-menu/faq";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Faq || sentryspot - Job Borad ReactJs Template',
+  title: 'Faq || Abroadium- Job Borad ReactJs Template',
   description:
-    'sentryspot - Job Borad ReactJs Template',
+    'Abroadium- Job Borad ReactJs Template',
   
 }
 

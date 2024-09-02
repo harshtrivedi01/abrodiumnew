@@ -35,7 +35,7 @@ const FormInfoBox = () => {
                     <input
                         type="text"
                         name="name"
-                        placeholder="ib-sentryspot"
+                        placeholder="ib-Abroadium"
                         required
                     />
                 </div>

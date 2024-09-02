@@ -48,7 +48,7 @@ const index = () => {
           our users’ needs. Full details on our privacy policy can be found at:{" "}
         </span>
         <span style={{ fontSize: "20px" }}>
-          https://sentryspotfe.vercel.app/
+          https://Abroadiumfe.vercel.app/
         </span>
       </CookieConsent>
       <section className="job-categories ui-job-categories">

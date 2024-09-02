@@ -24,8 +24,8 @@ const DashboardHeader = () => {
 
   return (
     // <!-- Main Header-->
-    <header
-      className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}`}
+    <header style={{backgroundColor:"#4C3957"}}
+      className={`main-header header-shaddow  ${navbar ? "fixed-header " : ""}` }
     >
       <div className="container-fluid">
         {/* <!-- Main box --> */}
